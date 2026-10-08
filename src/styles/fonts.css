@@ -1,7 +1,7 @@
 /* Alaska typeface family (self-hosted) */
 @font-face {
   font-family: "Alaska Bold";
-  src: url("../fonts/alaska-bold.woff2") format("woff2");
+  src: url("/fonts/alaska-bold.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Alaska Light";
-  src: url("../fonts/alaska-light.woff2") format("woff2");
+  src: url("/fonts/alaska-light.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Alaska Expanded";
-  src: url("../fonts/alaska-expanded.woff2") format("woff2");
+  src: url("/fonts/alaska-expanded.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: "Alaska Expanded Bold";
-  src: url("../fonts/alaska-expanded-bold.woff2") format("woff2");
+  src: url("/fonts/alaska-expanded-bold.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

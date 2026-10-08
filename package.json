@@ -1,16 +1,24 @@
 {
   "name": "askbefore-ai",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Askbefore.AI marketing website (static, no build step)",
+  "type": "module",
+  "description": "Askbefore.AI marketing website (Astro, static output)",
   "scripts": {
-    "dev": "serve public -l 3000",
-    "start": "serve public -l 3000"
-  },
-  "devDependencies": {
-    "serve": "^14.2.6"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.7",
+    "sharp": "^0.35.5",
+    "swiper": "^14.3.0",
+    "typescript": "^6.0.3"
   }
 }

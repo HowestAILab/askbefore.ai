@@ -7,6 +7,8 @@
   --plum-dark: #3e0d2d;
   --purple: #b06ef7;
   --purple-deep: #b06ef7;
+  --purple-strong: #8b4fd6; /* large accent text / active dots: 4.3:1 on cream */
+  --purple-ink: #6f33b8;    /* small purple text: 6.3:1 on cream, 5:1 on purple-mist */
   --purple-pale: #f3afff;
   --pill-inactive: #e1ded7;
   --purple-mist: #dfd1df;
@@ -17,7 +19,7 @@
   --font-heading: "Alaska Bold", sans-serif;
   --font-body: "Alaska Light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --max-width: 2200px;
-  --gutter: clamp(8px, 0.9vw, 20px);
+  --gutter: clamp(14px, 1.1vw, 22px);
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-pill: 999px;
@@ -26,7 +28,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0;
   background: var(--cream);
@@ -45,13 +48,14 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100svh;
 }
 main {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
 }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 .wrap {
   width: 100%;
@@ -146,8 +150,8 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(180deg, rgba(40,15,32,.15) 0%, rgba(40,15,32,.45) 100%);
   z-index: 1;
 }
-.hero--tall .hero-frame { height: clamp(380px, 60vh, 680px); }
-.hero--short .hero-frame { height: clamp(300px, calc(100vh - 400px), 600px); }
+.hero--tall .hero-frame { height: clamp(380px, 60vh, 680px); height: clamp(380px, 60svh, 680px); }
+.hero--short .hero-frame { height: clamp(300px, calc(100vh - 400px), 600px); height: clamp(300px, calc(100svh - 400px), 600px); }
 .hero--short { margin-bottom: 0; }
 .hero-headline {
   position: absolute;
@@ -195,7 +199,7 @@ a { color: inherit; text-decoration: none; }
 }
 .traject-card .extra {
   font-family: var(--font-display-1);
-  color: var(--purple-pale);
+  color: var(--white);
   font-size: clamp(1.5rem, 1.6vw, 2.1rem);
   margin: 0;
 }
@@ -205,12 +209,12 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(0.82rem, 0.75vw, 0.97rem);
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--plum);
+  color: var(--plum-dark);
   margin: 0 0 8px;
 }
 .traject-card p.desc {
   margin: 0;
-  color: var(--plum);
+  color: var(--plum-dark);
   font-size: clamp(0.95rem, 1vw, 1.15rem);
   line-height: 1.5;
 }
@@ -339,7 +343,7 @@ a { color: inherit; text-decoration: none; }
 .footer-legal a {
   font-size: clamp(0.8rem, 0.85vw, 0.92rem);
   color: var(--text-dark);
-  opacity: .65;
+  opacity: .8;
   transition: opacity .15s ease;
 }
 .footer-legal a:hover { opacity: 1; text-decoration: underline; }
@@ -381,7 +385,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(0.92rem, 0.7vw, 1rem);
   color: var(--text-dark);
 }
-.site-footer a.footer-link { color: var(--purple-deep); }
+.site-footer a.footer-link { color: var(--purple-ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .site-footer a.footer-link:hover { text-decoration: underline; }
 .footer-howest {
   display: flex;
@@ -402,12 +406,14 @@ a { color: inherit; text-decoration: none; }
 /* ===== Over ons: intro ===== */
 .intro-screen {
   min-height: calc(100vh - 112px);
+  min-height: calc(100svh - 112px);
   display: flex;
   flex-direction: column;
 }
 @media (min-height: 960px) {
   .intro-screen {
     min-height: calc(92vh - 112px);
+    min-height: calc(92svh - 112px);
   }
 }
 .page-title-row {
@@ -425,7 +431,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
   color: var(--plum);
 }
-.page-title-row h1 .accent { color: var(--purple); }
+.page-title-row h1 .accent { color: var(--purple-strong); }
 
 .intro-box {
   background: var(--purple);
@@ -442,7 +448,7 @@ a { color: inherit; text-decoration: none; }
 .intro-box p {
   font-family: var(--font-display-2);
   margin: 0;
-  color: var(--plum);
+  color: var(--plum-dark);
   font-size: clamp(1rem, 1.15vw, 1.3rem);
   line-height: 1.5;
   max-width: 62ch;
@@ -495,7 +501,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0 0 2px;
   line-height: 1.05;
 }
-.testimonials-heading .sub { color: var(--purple); font-family: var(--font-display-1); font-size: clamp(1.5rem, 1.85vw, 2.2rem); line-height: 1.05; margin: 0; }
+.testimonials-heading .sub { color: var(--purple-strong); font-family: var(--font-display-1); font-size: clamp(1.5rem, 1.85vw, 2.2rem); line-height: 1.05; margin: 0; }
 
 .testimonial-carousel {
   position: relative;
@@ -507,7 +513,11 @@ a { color: inherit; text-decoration: none; }
 .testimonial-swiper {
   width: 100%;
   padding: clamp(40px, 5vw, 70px) clamp(28px, 6vw, 88px) clamp(34px, 4vw, 52px);
+  /* hidden until Swiper has centred the slides, so the cards never jump */
+  opacity: 0;
+  transition: opacity .4s ease;
 }
+.testimonial-swiper.swiper-initialized { opacity: 1; }
 .testimonial-swiper .swiper-wrapper {
   /* Swiper drives transform/translate3d here for the coverflow effect */
   align-items: stretch;
@@ -526,16 +536,18 @@ a { color: inherit; text-decoration: none; }
    stay resting on their back, the way lifeatspotify.com's coverflow
    reveals content only on the slide facing the viewer. */
 .testimonial-card {
+  --card-min: clamp(400px, 36vw, 500px);
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: clamp(400px, 36vw, 500px);
+  min-height: var(--card-min);
   perspective: 1400px;
 }
 .testimonial-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: var(--card-min);
   transform-style: preserve-3d;
   transition: transform .7s cubic-bezier(.45, .15, .2, 1);
 }
@@ -559,6 +571,10 @@ a { color: inherit; text-decoration: none; }
   background: var(--plum);
 }
 .testimonial-face-front {
+  position: relative;
+  inset: auto;
+  height: 100%;
+  min-height: var(--card-min);
   background: var(--purple-mist);
   justify-content: flex-start;
   transform: rotateY(180deg);
@@ -588,7 +604,7 @@ a { color: inherit; text-decoration: none; }
 .testimonial-author {
   margin: auto 0 0;
   padding-top: clamp(18px, 2vw, 26px);
-  color: var(--purple-deep);
+  color: var(--purple-ink);
   font-family: var(--font-heading);
   font-style: italic;
   font-size: clamp(0.85rem, .9vw, .98rem);
@@ -615,7 +631,7 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer;
   transition: background .25s ease, transform .25s ease;
 }
-.carousel-dots .carousel-dot.is-active { background: var(--purple-deep); transform: scale(1.3); }
+.carousel-dots .carousel-dot.is-active { background: var(--purple-strong); transform: scale(1.3); }
 
 /* ===== Wat we doen ===== */
 .section-heading {
@@ -669,7 +685,7 @@ a { color: inherit; text-decoration: none; }
 .wwd-body { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(26px, 2.6vw, 40px); }
 .wwd-cell p {
   margin: 0;
-  color: var(--plum);
+  color: var(--plum-dark);
   font-size: clamp(0.95rem, 1vw, 1.15rem);
   line-height: 1.55;
 }
@@ -687,26 +703,25 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius-md);
 }
 
-/* ===== Scroll reveal ===== */
-[data-reveal].reveal-init {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
+/* ===== Scroll reveal =====
+   Pure CSS scroll-driven animation: items already on screen at load are simply
+   shown (no flash), items further down fade in as they enter. Browsers without
+   animation-timeline support just show everything. Uses the individual
+   `translate` property so it never fights the hover `transform`s. */
+@keyframes reveal-in {
+  from { opacity: 0; translate: 0 24px; }
+  to   { opacity: 1; translate: 0 0; }
 }
-[data-reveal].reveal-init.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.trajects .traject-card:nth-child(1) { transition-delay: 0s; }
-.trajects .traject-card:nth-child(2).reveal-init { transition-delay: .08s; }
-.trajects .traject-card:nth-child(3).reveal-init { transition-delay: .16s; }
-.wwd-grid .wwd-cell:nth-child(2n).reveal-init { transition-delay: .08s; }
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal].reveal-init {
-    opacity: 1;
-    transform: none;
-    transition: none;
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
   }
+}
+@media (prefers-reduced-motion: reduce) {
   .testimonial-card-inner { transition: none; }
 }
 
@@ -729,6 +744,82 @@ a { color: inherit; text-decoration: none; }
   .cta-bar { flex-wrap: nowrap; }
   .site-footer .wrap { grid-template-columns: 1fr; }
   .testimonial-swiper .swiper-slide { width: clamp(220px, 78vw, 300px); }
-  .testimonial-card { min-height: 380px; }
+  .testimonial-card { --card-min: 380px; }
   .testimonial-face { padding: 28px 22px 30px; }
+}
+
+/* ===== Accessibility & focus ===== */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -64px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--plum);
+  color: var(--cream);
+  transition: top .15s ease;
+}
+.skip-link:focus { top: 12px; }
+:focus-visible {
+  outline: 3px solid var(--purple-strong);
+  outline-offset: 3px;
+}
+.cta-bar:focus-visible, .btn-pill:focus-visible, .nav-pills a:focus-visible, .logo:focus-visible {
+  outline-offset: 4px;
+}
+
+/* ===== Page transitions (Astro view transitions) ===== */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .2s; }
+
+/* ===== Testimonial carousel: side buttons ===== */
+.carousel-stage { position: relative; }
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 5;
+  width: clamp(44px, 3.4vw, 56px);
+  height: clamp(44px, 3.4vw, 56px);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: var(--plum);
+  color: var(--cream);
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, border-color .25s ease, scale .15s ease;
+}
+.carousel-nav svg { width: 45%; height: 45%; }
+.carousel-nav { box-shadow: 0 0 0 6px var(--cream); }
+.carousel-nav:hover { background: var(--cream); border-color: var(--plum); color: var(--plum); }
+.carousel-nav:active { scale: .94; }
+.carousel-prev { left: clamp(6px, 1.6vw, 28px); }
+.carousel-next { right: clamp(6px, 1.6vw, 28px); }
+
+/* Dots: bigger tap area than the 8px dot itself */
+.carousel-dots .carousel-dot { position: relative; }
+.carousel-dots .carousel-dot::after { content: ""; position: absolute; inset: -10px; }
+
+@media (max-width: 700px) {
+  /* On phones the buttons flank the dots under the carousel (swiping still works). */
+  .carousel-nav { top: auto; bottom: -58px; translate: none; }
+  .carousel-prev { left: calc(50% - 98px); }
+  .carousel-next { right: calc(50% - 98px); }
+  .testimonial-carousel .carousel-dots { margin-top: 32px; }
+  .testimonial-carousel { padding-bottom: 36px; }
+}
+
+/* ===== Small-screen polish ===== */
+@media (max-width: 640px) {
+  .site-header { padding-top: 14px; }
+  .site-header .wrap { justify-content: center; gap: 10px 14px; }
+  .nav-pills { justify-content: center; }
+  .hero-headline { left: 16px; right: 16px; }
+  .cta-bar { gap: 14px; padding-left: 22px; }
+  .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+  .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
+  .intro-box { padding: 24px 22px; }
+  .site-footer { padding: 28px 0 24px; }
 }

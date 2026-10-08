@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import { testimonials } from "../data/testimonials";
+
+// Swiper's loop mode needs more slides than are visible at once, so the
+// (unique) testimonials are repeated. The dots and the active card use the
+// unique index, so visitors still see one entry per testimonial.
+const REPEAT = 4;
+const slides = Array.from({ length: REPEAT }, () => testimonials).flat();
+---
+<div
+  class="testimonial-carousel"
+  data-reveal
+  data-unique={testimonials.length}
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="Testimonials"
+>
+  <div class="carousel-stage">
+    <button class="carousel-nav carousel-prev" type="button" aria-label="Vorige testimonial">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 12H4M10 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div class="testimonial-swiper swiper">
+      <div class="swiper-wrapper">
+        {slides.map((t) => (
+          <div class="swiper-slide">
+            <article class="testimonial-card">
+              <div class="testimonial-card-inner">
+                <div class="testimonial-face testimonial-face-back" aria-hidden="true">
+                  <span class="testimonial-logo"><Image src={t.logo} alt="" width={240} loading="lazy" /></span>
+                </div>
+                <div class="testimonial-face testimonial-face-front">
+                  <span class="testimonial-logo"><Image src={t.logo} alt={t.company} width={240} loading="lazy" /></span>
+                  <p class="testimonial-quote">
+                    {t.quote.map((line, i) => (<>{i > 0 && <br />}{line}</>))}
+                  </p>
+                  <p class="testimonial-author">{t.author}</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <button class="carousel-nav carousel-next" type="button" aria-label="Volgende testimonial">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <div class="carousel-dots" role="group" aria-label="Kies een testimonial"></div>
+</div>

@@ -1,8 +1,9 @@
 node_modules/
-.vercel/
+dist/
+.astro/
+.vercel
 .env
 .env.*
 !.env.example
 .DS_Store
-.vercel
-.env*
+npm-debug.log*

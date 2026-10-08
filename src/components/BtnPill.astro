@@ -1,0 +1,12 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+
+interface Props {
+  href: string;
+}
+const { href } = Astro.props;
+---
+<a class="btn-pill" href={href}>
+  <slot />
+  <span class="arrow-sm"><ArrowIcon /></span>
+</a>

@@ -1,0 +1,25 @@
+---
+import { SITE } from "../data/site";
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h4>{SITE.address.place}</h4>
+      <p>{SITE.address.street}</p>
+    </div>
+    <div>
+      <h4>Jobs</h4>
+      <p>Stuur je motivatie naar <a class="footer-link" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    </div>
+    {SITE.linkedin && (
+      <div>
+        <h4>Blijf op de hoogte</h4>
+        <p><a class="footer-link" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+    )}
+    <div class="footer-howest">
+      <span>een dienst van</span>
+      <span class="howest-wordmark">howest<span>university of applied sciences</span></span>
+    </div>
+  </div>
+</footer>

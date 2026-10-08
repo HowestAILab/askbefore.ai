@@ -1,65 +1,63 @@
 # Askbefore.AI website
 
-Static marketing site (Dutch). No framework and no build step: everything Vercel needs to serve lives in `public/`.
+Marketing site (Dutch) built with [Astro](https://astro.build): real pages, shared components and optimised
+images, compiled to plain static files. Hosted on Vercel; pushing to `main` deploys to production.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
+npm run dev        # http://localhost:4321 (hot reload)
+npm run build      # static site -> dist/
+npm run preview    # serve the production build locally
+npm run check      # type/template check
 ```
 
-Any static file server pointed at `public/` works as well (`python3 -m http.server -d public 3000`).
-Do not open `index.html` via `file://`: pages are loaded with `fetch()` and asset paths are root-relative.
+Requires Node 22.12 or newer.
 
 ## Structure
 
 ```
-public/                     <- deploy root (Vercel outputDirectory)
-├── index.html              entry point: head, #app mount, scripts
-├── pages/                  one HTML fragment per route (the <main> content)
-│   ├── over-ons.html       #/over-ons/wat-we-doen  (home)
-│   ├── aanbod.html         #/aanbod
-│   ├── contact.html        #/contact
-│   ├── privacy.html        #/privacy   (placeholder text)
-│   └── terms.html          #/terms     (placeholder text)
-├── partials/               shared chrome: header, footer, legal bar
-└── assets/
-    ├── css/
-    │   ├── fonts.css       @font-face for the Alaska family
-    │   ├── vendor/swiper.css
-    │   └── styles.css      all site styles (design tokens at the top)
-    ├── js/
-    │   ├── site.js         carousel, scroll-reveal, sticky header state
-    │   └── router.js       hash router (#/route) -> loads pages + partials
-    ├── fonts/              woff2 files
-    └── images/             logos, photos, diagrams
-vercel.json                 output dir, security + cache headers
-package.json                dev server only (`serve`)
+src/
+├── pages/                 one file per URL: index (Over ons), aanbod, contact, privacy, terms, 404
+├── layouts/Layout.astro   <head> (SEO, favicon, fonts), header/footer, page transitions
+├── components/            Header, Footer, Hero, CtaBar/CtaRow/CtaBlock, BtnPill, TrajectCard, TestimonialCarousel
+├── data/
+│   ├── site.ts            email, booking link, LinkedIn, address, nav items  <- edit contact details here
+│   └── testimonials.ts    testimonials shown in the carousel                 <- edit/add testimonials here
+├── scripts/               carousel.ts (Swiper), site.ts (active nav, header state)
+├── styles/                global.css (design tokens at the top), fonts.css
+└── assets/images/         photos and logos (optimised at build time by Astro)
+public/                    served as-is: fonts/, favicon.svg, favicon-32.png, apple-touch-icon.png, robots.txt
+vercel.json                build/output settings, security + cache headers
 ```
 
-## How routing works
+## Common changes
 
-The site is a hash-routed SPA (`#/aanbod`, `#/contact`, ...), so Vercel needs no rewrites. Routes are
-declared in `public/assets/js/router.js` (`ROUTES`). To add a page:
+- **Copy:** edit the page in `src/pages/`. Shared bits (footer, CTAs) live in `src/components/`.
+- **Testimonials:** add an entry to `src/data/testimonials.ts`; the carousel, dots and arrows update themselves.
+- **Contact details / booking link / LinkedIn:** `src/data/site.ts`. The footer's LinkedIn column only appears
+  once `linkedin` is set.
+- **New page:** add `src/pages/<name>.astro` (wrap it in `Layout`), add it to `NAV` in `src/data/site.ts`.
+- **Images:** drop the file in `src/assets/images/` and use `<Image src={...} alt="..." />`; Astro creates
+  responsive WebP variants and sets width/height so nothing jumps while loading.
+- **Colours / spacing:** CSS variables at the top of `src/styles/global.css`. Use `--purple-ink` / `--purple-strong`
+  for purple *text* (the bright `--purple` is for backgrounds only; it fails contrast on light surfaces).
 
-1. create `public/pages/<name>.html` containing the `<main>` content,
-2. add an entry to `ROUTES` in `router.js`,
-3. link to it with `href="#/<route>"`.
+## Behaviour notes
 
-## Third-party
-
-- [Swiper 14.3.0](https://swiperjs.com) JS is loaded from cdnjs (`index.html`); its CSS is vendored in `assets/css/vendor/swiper.css`.
+- Navigation uses Astro view transitions (soft fade, header stays put). Scripts re-run on `astro:page-load`.
+- Scroll reveal is pure CSS (`animation-timeline: view()`), so nothing flashes on load; browsers without support just
+  show everything.
+- Old links such as `/#/aanbod` are redirected to the new paths by a tiny script in `Layout.astro`.
+- Privacy Policy and Terms are still placeholder text (and set to `noindex`).
 
 ## Deploy (Vercel)
 
-`vercel.json` already sets `outputDirectory: "public"` with no build/install command, so importing the GitHub repo
-in Vercel (framework preset: *Other*) works without further settings. Pushes to `main` deploy to production;
-other branches get preview URLs.
+The Vercel project `askbefore-ai` (team `askbeforeai`) is connected to this repo. Pushes to `main` deploy to production
+at https://askbefore.ai, other branches and PRs get preview URLs. `vercel.json` sets the Astro framework, `npm run build`
+and `dist/` as output. Domain DNS (GoDaddy) points at Vercel: `A @ 216.198.79.1 / 64.29.17.1`, `CNAME www`.
 
-## Notes
+## Third-party
 
-- Privacy Policy and Terms & Conditions are still placeholder text.
-- The LinkedIn link in `partials/footer.html` currently points to `#`.
-- Hash routing means each page shares one URL for crawlers. If SEO per page matters later, migrate to real paths
-  (add rewrites in `vercel.json`) or a static-site generator.
+- [Swiper](https://swiperjs.com) (testimonial carousel), bundled from npm; no external CDN at runtime.

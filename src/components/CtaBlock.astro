@@ -1,0 +1,12 @@
+---
+import CtaRow from "./CtaRow.astro";
+
+interface Props {
+  label?: string;
+}
+const { label = "Benieuwd naar onze trajecten op maat?" } = Astro.props;
+---
+<section class="wrap cta-block" data-reveal>
+  <p class="cta-label">{label}</p>
+  <CtaRow />
+</section>

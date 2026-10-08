@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import CtaRow from "../components/CtaRow.astro";
+import penta from "../assets/images/the-penta-howest-gebouw-in-kortrijk.jpg";
+---
+<Layout title="Contact" description="Boek een verkenningsgesprek of mail ons. We zoeken samen uit wat AI voor jouw team kan betekenen.">
+  <Hero image={penta} alt="The Penta, Howest gebouw in Kortrijk" variant="short">
+    Benieuwd wat AI voor<br />jouw team kan betekenen?
+  </Hero>
+
+  <section class="wrap cta-block contact-cta" data-reveal>
+    <CtaRow />
+  </section>
+</Layout>

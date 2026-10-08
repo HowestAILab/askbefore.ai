@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TrajectCard from "../components/TrajectCard.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import team from "../assets/images/team-van-askbefore-ai-in-overleg.jpg";
+---
+<Layout
+  title="Aanbod"
+  description="Kies hoe je start: AI-implementatie in workflows, met of zonder proof of concepts, of leer agents bouwen met agentic content creation."
+>
+  <Hero image={team} alt="Team van Askbefore.AI in overleg" variant="tall">Kies hoe je start.</Hero>
+
+  <section class="wrap">
+    <p class="hero-note">Onafhankelijk AI-advies, workshops en proofs of concept van een academische partner. Zonder belang bij een bepaalde tool of leverancier.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="trajects">
+      <TrajectCard
+        title={["#1 Traject", "AI implementatie", "in workflows"]}
+        audience="Voor bedrijven en organisaties"
+        description="Wil je vooral strategische richting, dan is onze standaardformule de ideale start."
+      />
+      <TrajectCard
+        title={["#2 Traject", "AI implementatie", "in workflows"]}
+        extra="+ Proof of concepts"
+        audience="Voor bedrijven en organisaties"
+        description="Wil je sneller resultaat zien? Dan bouwen we in de uitgebreide formule ook werkende prototypes voor je."
+      />
+      <TrajectCard
+        title={["#3 Traject", "Agentic Content creation"]}
+        audience="Voor professionals"
+        description="Leer technische agents bouwen aan de hand van een concreet voorbeeld: contentcreatie met AI."
+      />
+    </div>
+  </section>
+
+  <section class="wrap">
+    <p class="kmo-note" data-reveal>Ben je een kmo met een vestiging in Vlaanderen? Dan komt het opleidingsgedeelte van dit traject in aanmerking voor steun via de kmo-portefeuille van de Vlaamse overheid. Kleine ondernemingen krijgen 30% van het opleidingsbedrag terug, middelgrote 20%, met een maximum van 7.500 euro per jaar.</p>
+  </section>
+
+  <CtaBlock />
+</Layout>

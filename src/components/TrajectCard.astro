@@ -1,0 +1,19 @@
+---
+interface Props {
+  /** Kicker lines, rendered with <br> between them. */
+  title: string[];
+  extra?: string;
+  audience: string;
+  description: string;
+}
+const { title, extra, audience, description } = Astro.props;
+---
+<article class="traject-card" data-reveal>
+  <h2 class="kicker">
+    {title.map((line, i) => (<>{i > 0 && <br />}{line}</>))}
+  </h2>
+  {extra && <p class="extra">{extra}</p>}
+  <div class="spacer"></div>
+  <p class="voor">{audience}</p>
+  <p class="desc">{description}</p>
+</article>

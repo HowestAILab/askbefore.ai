@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/images/askbefore-ai.png";
+import { NAV } from "../data/site";
+---
+<header class="site-header" transition:persist>
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Askbefore.AI, naar de startpagina">
+      <Image src={logo} alt="Askbefore.AI" width={460} loading="eager" />
+    </a>
+    <nav class="nav-pills" aria-label="Hoofdnavigatie">
+      {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+  </div>
+</header>

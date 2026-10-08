@@ -1,0 +1,80 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { getImage } from "astro:assets";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FooterLegal from "../components/FooterLegal.astro";
+import ogSource from "../assets/images/team-van-askbefore-ai-in-overleg.jpg";
+import { SITE } from "../data/site";
+import "../styles/fonts.css";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { title, description = SITE.description, noindex = false } = Astro.props;
+const fullTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+// build.format is "file", so strip the .html / index the pathname would otherwise carry.
+const cleanPath = Astro.url.pathname.replace(/(^|\/)index\.html$/, "$1").replace(/\.html$/, "");
+const canonical = new URL(cleanPath || "/", SITE.url).href;
+const og = await getImage({ src: ogSource, width: 1200, height: 630, format: "jpg", fit: "cover" });
+const ogImage = new URL(og.src, SITE.url).href;
+
+const fonts = ["alaska-light", "alaska-bold", "alaska-expanded", "alaska-expanded-bold"];
+---
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f1ede0" />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="nl_BE" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {fonts.map((f) => <link rel="preload" href={`/fonts/${f}.woff2`} as="font" type="font/woff2" crossorigin />)}
+
+    <!-- Old hash links (#/aanbod, #/contact, ...) keep working. -->
+    <script is:inline>
+      (function () {
+        var h = location.hash;
+        if (location.pathname !== "/" || h.indexOf("#/") !== 0) return;
+        var map = { "#/aanbod": "/aanbod", "#/contact": "/contact", "#/privacy": "/privacy", "#/terms": "/terms" };
+        var to = map[h] || (h.indexOf("#/over-ons/wat-we-doen") === 0 ? "/#wat-we-doen" : "/");
+        location.replace(to);
+      })();
+    </script>
+
+    <ClientRouter />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ga naar de inhoud</a>
+    <div class="page-frame">
+      <Header />
+      <main id="main"><slot /></main>
+      <Footer />
+    </div>
+    <FooterLegal />
+    <noscript><style>[data-reveal] { animation: none !important; } .testimonial-swiper { opacity: 1 !important; }</style></noscript>
+    <script>
+      import "../scripts/site";
+    </script>
+  </body>
+</html>

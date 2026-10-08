@@ -1,0 +1,14 @@
+---
+import ArrowIcon from "./ArrowIcon.astro";
+
+interface Props {
+  href: string;
+  /** Opens in a new tab (booking page). */
+  external?: boolean;
+}
+const { href, external = false } = Astro.props;
+---
+<a class="cta-bar" href={href} {...external ? { target: "_blank", rel: "noopener noreferrer" } : {}}>
+  <span><slot /></span>
+  <span class="arrow"><ArrowIcon /></span>
+</a>
