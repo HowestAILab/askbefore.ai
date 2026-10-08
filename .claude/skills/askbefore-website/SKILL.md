@@ -81,8 +81,8 @@ production deployment instantly. Follow up with a revert so the repo matches wha
 
 ## Domain
 
-`askbefore.ai` is registered at GoDaddy and points to Vercel via DNS (A `@` → `76.76.21.21`,
-CNAME `www` → `cname.vercel-dns.com`, or the exact values shown in the Vercel project's Domains settings).
+`askbefore.ai` is registered at GoDaddy and points to Vercel via DNS (A `@` → `216.198.79.1` and `64.29.17.1`,
+CNAME `www` → `77e428be04ca90db.vercel-dns-017.com`; always prefer the exact values shown in the Vercel project's Domains settings or by `vercel domains verify askbefore.ai`).
 Changing DNS is done manually in GoDaddy, not through this skill.
 
 ## Don'ts
