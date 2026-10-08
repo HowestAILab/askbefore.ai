@@ -3,6 +3,24 @@
 Marketing site (Dutch) built with [Astro](https://astro.build): real pages, shared components and optimised
 images, compiled to plain static files. Hosted on Vercel; pushing to `main` deploys to production.
 
+## Working on the site with Claude (for colleagues)
+
+You need: a GitHub account with **write access to `HowestAILab/askbefore.ai`**, Node 22.12+, git and
+[Claude Code](https://claude.com/claude-code). A Vercel login is optional (only for looking at deployments).
+
+```bash
+git clone git@github.com:HowestAILab/askbefore.ai.git && cd askbefore.ai
+npm install
+gh auth login              # or add an SSH key to GitHub
+npm run doctor             # checks everything and tells you what is missing
+claude                     # then just describe the change you want, in Dutch or English
+```
+
+The project ships a Claude skill (`.claude/skills/askbefore-website/`) and a `CLAUDE.md`, so Claude already knows the
+structure, the checks to run and the publish flow. Example requests: *"Pas de tekst van traject 2 aan"*, *"Voeg een
+testimonial van Acme toe"*, *"Maak een preview van deze wijziging"*, *"Publiceer naar productie"*. Claude asks before
+anything goes live: pushing to `main` deploys to https://askbefore.ai.
+
 ## Run locally
 
 ```bash
@@ -11,6 +29,8 @@ npm run dev        # http://localhost:4321 (hot reload)
 npm run build      # static site -> dist/
 npm run preview    # serve the production build locally
 npm run check      # type/template check
+npm run verify     # check + build: run before every push
+npm run doctor     # read-only check of Node, git, GitHub access, Vercel login
 ```
 
 Requires Node 22.12 or newer.

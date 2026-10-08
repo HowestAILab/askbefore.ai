@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import howestLogo from "../assets/images/howest-logo.png";
 import { SITE } from "../data/site";
 ---
 <footer class="site-footer">
@@ -17,9 +19,9 @@ import { SITE } from "../data/site";
         <p><a class="footer-link" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
       </div>
     )}
-    <div class="footer-howest">
+    <a class="footer-howest" href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
       <span>een dienst van</span>
-      <span class="howest-wordmark">howest<span>university of applied sciences</span></span>
-    </div>
+      <Image src={howestLogo} alt="Howest, university of applied sciences" width={260} loading="lazy" />
+    </a>
   </div>
 </footer>

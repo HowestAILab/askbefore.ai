@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/images/askbefore-ai.png";
-import { NAV } from "../data/site";
+import { NAV, SITE } from "../data/site";
 ---
 <header class="site-header" transition:persist>
   <div class="wrap">
@@ -11,5 +11,8 @@ import { NAV } from "../data/site";
     <nav class="nav-pills" aria-label="Hoofdnavigatie">
       {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
+    <a class="nav-cta" href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer" aria-label="Boek een verkenningsgesprek">
+      <span class="nav-cta-long">Boek een verkenningsgesprek</span><span class="nav-cta-short" aria-hidden="true">Boek een gesprek</span>
+    </a>
   </div>
 </header>
