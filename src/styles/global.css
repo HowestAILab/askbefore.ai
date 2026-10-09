@@ -358,35 +358,25 @@ a { color: inherit; text-decoration: none; }
 }
 .footer-legal {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: clamp(16px, 1.6vw, 28px);
   max-width: var(--max-width);
   /* left/right match .site-footer's own margin (var(--gutter)) plus its
      .wrap's inner padding, so this lines up with "The Penta..." above it */
-  margin: clamp(16px, 2vw, 28px) auto 0;
+  /* space above (12px footer margin + this padding) equals the space below */
+  margin: 0 auto;
+  padding-top: calc(clamp(16px, 2vw, 28px) - 12px);
   padding-left: calc(var(--gutter) + clamp(22px, 2vw, 38px));
   padding-right: calc(var(--gutter) + clamp(22px, 2vw, 38px));
   padding-bottom: clamp(16px, 2vw, 28px);
 }
-.footer-legal a {
+.footer-legal a, .footer-legal span {
   font-size: clamp(0.8rem, 0.85vw, 0.92rem);
   color: var(--text-dark);
   opacity: .65;
   transition: opacity .15s ease;
 }
 .footer-legal a:hover { opacity: 1; text-decoration: underline; }
-
-/* Small fixed Howest logo, bottom left; same left edge as the content blocks (.wrap padding) */
-.howest-fixed {
-  position: fixed;
-  left: calc(max(0px, (100vw - var(--max-width)) / 2) + var(--gutter));
-  bottom: clamp(12px, 1.4vw, 22px);
-  z-index: 40;
-  line-height: 0;
-  transition: opacity .15s ease;
-}
-.howest-fixed:hover { opacity: .75; }
-.howest-fixed img { height: clamp(26px, 2.2vw, 36px); width: auto; }
 
 /* ===== Legal pages (Privacy / Terms) ===== */
 .legal-content {
@@ -448,8 +438,17 @@ a.footer-howest:hover { opacity: .75; }
   min-height: calc(100svh - 100px);
   display: flex;
   flex-direction: column;
-  padding-bottom: clamp(56px, 8.5vh, 104px);
+  padding-bottom: clamp(24px, 4vh, 56px);
 }
+/* "Powered by Howest" under the purple block, only on the first screen of the home page */
+.powered-by {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(24px, 4vh, 44px);
+}
+.powered-by a { line-height: 0; transition: opacity .15s ease; }
+.powered-by a:hover { opacity: .75; }
+.powered-by img { height: clamp(40px, 3.4vw, 60px); width: auto; }
 .page-title-row {
   flex: 1;
   display: flex;
