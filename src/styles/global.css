@@ -443,11 +443,10 @@ a.footer-howest:hover { opacity: .75; }
 /* "Powered by Howest" under the purple block, only on the first screen of the home page */
 .powered-by {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: clamp(14px, 2.2vh, 24px);
 }
-/* left edge lines up with the text inside the purple block (same inner padding as .intro-box) */
-.powered-by a { line-height: 0; margin-left: clamp(24px, 4vw, 44px); transition: opacity .15s ease; }
+.powered-by a { line-height: 0; transition: opacity .15s ease; }
 .powered-by a:hover { opacity: .75; }
 .powered-by img { height: clamp(34px, 2.9vw, 52px); width: auto; }
 .page-title-row {
@@ -869,6 +868,5 @@ a.footer-howest:hover { opacity: .75; }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
   .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
   .intro-box { padding: 24px 22px; }
-  .powered-by a { margin-left: 22px; }
   .site-footer { padding: 24px 0; }
 }
