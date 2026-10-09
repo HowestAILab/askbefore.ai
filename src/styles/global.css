@@ -445,7 +445,7 @@ a.footer-howest:hover { opacity: .75; }
   display: flex;
   align-items: center;
   width: fit-content;
-  margin: 0 0 clamp(12px, 1.6vw, 20px);
+  margin: 0 0 clamp(6px, 0.7vw, 10px);
   line-height: 0;
   background: var(--plum);
   border-radius: var(--radius-pill);
