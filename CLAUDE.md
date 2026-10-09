@@ -18,7 +18,7 @@ For any task that edits, previews, publishes, checks or rolls back the site, use
 - Site copy is Dutch. Match the tone of the existing pages.
 - Edit `src/`; never edit `dist/` or `.astro/` (generated, git-ignored).
 - Contact details, booking link, LinkedIn and nav live in `src/data/site.ts`; testimonials in `src/data/testimonials.ts`.
-- Purple text uses `--purple-ink` / `--purple-strong` (the bright `--purple` is background only; contrast).
+- Colours: only the client palette tokens at the top of `src/styles/global.css`. Purple text uses `--purple-deep` (same value as `--purple`); contrast on cream is low, so keep it to large text.
 - Fonts live in `src/assets/fonts/alaska/` (woff2 + woff, see the README there) and are wired up in `src/styles/fonts.css`; keep both formats and the file names when replacing one.
 - Every image needs a meaningful `alt`; use `<Image>` from `astro:assets` with images from `src/assets/images/`.
 - No third-party CDNs and no secrets in the repo. `.env*` and `.vercel/` are git-ignored; keep it that way.
