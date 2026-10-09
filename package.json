@@ -9,8 +9,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "verify": "astro check && astro build",
-    "doctor": "bash scripts/doctor.sh"
+    "verify": "astro check && astro build && node scripts/guard.test.mjs",
+    "doctor": "bash scripts/doctor.sh",
+    "test:guard": "node scripts/guard.test.mjs"
   },
   "engines": {
     "node": ">=22.12.0"

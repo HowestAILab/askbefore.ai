@@ -1,0 +1,10 @@
+# Everything that controls deployment, build output, or what Claude is allowed to do is reviewed by an owner.
+# This only takes effect when branch protection on `main` has "Require review from Code Owners" enabled.
+/.claude/          @JensKrijgsman
+/.github/          @JensKrijgsman
+/scripts/          @JensKrijgsman
+/CLAUDE.md         @JensKrijgsman
+/.mcp.json         @JensKrijgsman
+/vercel.json       @JensKrijgsman
+/astro.config.mjs  @JensKrijgsman
+/package.json      @JensKrijgsman
