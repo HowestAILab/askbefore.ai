@@ -5,10 +5,12 @@ interface Props {
   href: string;
   /** Opens in a new tab (booking page). */
   external?: boolean;
+  /** Pale purple background with plum text. */
+  pink?: boolean;
 }
-const { href, external = false } = Astro.props;
+const { href, external = false, pink = false } = Astro.props;
 ---
-<a class="cta-bar" href={href} {...external ? { target: "_blank", rel: "noopener noreferrer" } : {}}>
+<a class:list={["cta-bar", { "is-pink": pink }]} href={href} {...external ? { target: "_blank", rel: "noopener noreferrer" } : {}}>
   <span><slot /></span>
   <span class="arrow"><ArrowIcon /></span>
 </a>
