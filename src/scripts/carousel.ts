@@ -30,6 +30,7 @@ export function initCarousel() {
     slidesPerView: "auto",
     spaceBetween: 4,
     loop: true,
+    initialSlide: 0, // always open on the first testimonial (Barco)
     speed: reduceMotion ? 0 : 700,
     watchSlidesProgress: true,
     // Scrollable: drag/swipe, trackpad (horizontal), keyboard arrows and the side buttons.

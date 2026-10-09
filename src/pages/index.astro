@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import ArrowIcon from "../components/ArrowIcon.astro";
 import BtnPill from "../components/BtnPill.astro";
 import CtaBlock from "../components/CtaBlock.astro";
 import TestimonialCarousel from "../components/TestimonialCarousel.astro";
@@ -19,15 +20,18 @@ const cellSizes = "(max-width: 900px) 100vw, 50vw";
     </section>
 
     <section class="wrap">
-      <a class="powered-by" href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
-        <Image src={poweredBy} alt="Powered by Howest" width={480} loading="eager" />
-      </a>
       <div class="intro-box" data-reveal>
         <div class="intro-copy">
-          <p>We zijn een team van AI-specialisten van Howest, met een stevige achtergrond in business, marketing en IT.</p>
-          <p>We helpen organisaties om AI slim en gericht in te zetten. Je krijgt onafhankelijk advies, praktische workshops en concrete prototypes van een academische partner.</p>
+          <p>Askbefore.ai is een team van AI-specialisten van Howest, met een stevige achtergrond in business, marketing en IT. We helpen organisaties om AI slim en gericht in te zetten. Je krijgt onafhankelijk advies, praktische workshops en concrete prototypes van een academische partner.</p>
         </div>
-        <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
+        <!-- Takes the place of the "Ga naar ons aanbod" button. The hidden copy of that button
+             makes this pill exactly as big as the button, at every screen size. -->
+        <div class="powered-pill">
+          <span class="btn-pill" aria-hidden="true">Ga naar ons aanbod<span class="arrow-sm"><ArrowIcon /></span></span>
+          <a class="powered-by" href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
+            <Image src={poweredBy} alt="Powered by Howest" width={480} loading="eager" />
+          </a>
+        </div>
       </div>
     </section>
   </div>
