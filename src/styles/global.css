@@ -441,10 +441,10 @@ a.footer-howest:hover { opacity: .75; }
   padding-bottom: clamp(12px, 2vh, 28px);
 }
 /* "Powered by Howest" under the home title */
-.title-block { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(14px, 1.6vw, 24px); }
-.powered-by { display: block; line-height: 0; transition: opacity .15s ease; }
+.title-block { width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: clamp(14px, 1.6vw, 24px); }
+.powered-by { display: block; align-self: center; line-height: 0; transition: opacity .15s ease; }
 .powered-by:hover { opacity: .75; }
-.powered-by img { height: clamp(24px, 2vw, 34px); width: auto; }
+.powered-by img { height: clamp(32px, 2.8vw, 48px); width: auto; }
 .page-title-row {
   flex: 1;
   display: flex;
