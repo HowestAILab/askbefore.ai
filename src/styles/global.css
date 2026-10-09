@@ -445,11 +445,13 @@ a.footer-howest:hover { opacity: .75; }
   display: flex;
   align-items: center;
   width: fit-content;
-  margin: 0 0 clamp(6px, 0.7vw, 10px);
+  /* the logo itself (not the pill) lines up with the text inside the purple block */
+  --pb-pad-x: clamp(16px, 1.4vw, 22px);
+  margin: 0 0 clamp(6px, 0.7vw, 10px) calc(clamp(24px, 4vw, 44px) - var(--pb-pad-x));
   line-height: 0;
   background: var(--plum);
   border-radius: var(--radius-pill);
-  padding: clamp(11px, 0.9vw, 14px) clamp(16px, 1.4vw, 22px);
+  padding: clamp(11px, 0.9vw, 14px) var(--pb-pad-x);
   transition: opacity .15s ease;
 }
 .powered-by:hover { opacity: .85; }
@@ -873,5 +875,6 @@ a.footer-howest:hover { opacity: .75; }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
   .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
   .intro-box { padding: 24px 22px; }
+  .powered-by { margin-left: calc(22px - var(--pb-pad-x)); }
   .site-footer { padding: 24px 0; }
 }
