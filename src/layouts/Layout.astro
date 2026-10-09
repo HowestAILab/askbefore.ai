@@ -6,6 +6,11 @@ import Footer from "../components/Footer.astro";
 import FooterLegal from "../components/FooterLegal.astro";
 import ogSource from "../assets/images/team-van-askbefore-ai-in-overleg.jpg";
 import { SITE } from "../data/site";
+// Hashed URLs of the fonts used on every page (identical to the ones fonts.css references).
+// The regular Expanded cut is only used on /aanbod, so it is not preloaded.
+import alaskaLight from "../assets/fonts/alaska/alaska-light.woff2?url";
+import alaskaBold from "../assets/fonts/alaska/alaska-bold.woff2?url";
+import alaskaExpandedBold from "../assets/fonts/alaska/alaska-expanded-bold.woff2?url";
 import "../styles/fonts.css";
 import "../styles/global.css";
 
@@ -23,7 +28,7 @@ const canonical = new URL(cleanPath || "/", SITE.url).href;
 const og = await getImage({ src: ogSource, width: 1200, height: 630, format: "jpg", fit: "cover" });
 const ogImage = new URL(og.src, SITE.url).href;
 
-const fonts = ["alaska-light", "alaska-bold", "alaska-expanded", "alaska-expanded-bold"];
+const preloadFonts = [alaskaLight, alaskaBold, alaskaExpandedBold];
 ---
 <!doctype html>
 <html lang="nl">
@@ -49,7 +54,7 @@ const fonts = ["alaska-light", "alaska-bold", "alaska-expanded", "alaska-expande
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    {fonts.map((f) => <link rel="preload" href={`/fonts/${f}.woff2`} as="font" type="font/woff2" crossorigin />)}
+    {preloadFonts.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
 
     <!-- Old hash links (#/aanbod, #/contact, ...) keep working. -->
     <script is:inline>

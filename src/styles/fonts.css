@@ -1,15 +1,18 @@
-/* Alaska typeface family (self-hosted) */
+/* Alaska typeface family (self-hosted). Files live in src/assets/fonts/alaska/ (see the README there).
+   Vite hashes these URLs at build time, so a replaced font is never served from a stale cache. */
 @font-face {
-  font-family: "Alaska Bold";
-  src: url("/fonts/alaska-bold.woff2") format("woff2");
+  font-family: "Alaska Light";
+  src: url("../assets/fonts/alaska/alaska-light.woff2") format("woff2"),
+       url("../assets/fonts/alaska/alaska-light.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Alaska Light";
-  src: url("/fonts/alaska-light.woff2") format("woff2");
+  font-family: "Alaska Bold";
+  src: url("../assets/fonts/alaska/alaska-bold.woff2") format("woff2"),
+       url("../assets/fonts/alaska/alaska-bold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -17,7 +20,8 @@
 
 @font-face {
   font-family: "Alaska Expanded";
-  src: url("/fonts/alaska-expanded.woff2") format("woff2");
+  src: url("../assets/fonts/alaska/alaska-expanded.woff2") format("woff2"),
+       url("../assets/fonts/alaska/alaska-expanded.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -25,7 +29,8 @@
 
 @font-face {
   font-family: "Alaska Expanded Bold";
-  src: url("/fonts/alaska-expanded-bold.woff2") format("woff2");
+  src: url("../assets/fonts/alaska/alaska-expanded-bold.woff2") format("woff2"),
+       url("../assets/fonts/alaska/alaska-expanded-bold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
