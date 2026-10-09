@@ -19,6 +19,7 @@ For any task that edits, previews, publishes, checks or rolls back the site, use
 - Edit `src/`; never edit `dist/` or `.astro/` (generated, git-ignored).
 - Contact details, booking link, LinkedIn and nav live in `src/data/site.ts`; testimonials in `src/data/testimonials.ts`.
 - Purple text uses `--purple-ink` / `--purple-strong` (the bright `--purple` is background only; contrast).
+- Fonts live in `src/assets/fonts/alaska/` (woff2 + woff, see the README there) and are wired up in `src/styles/fonts.css`; keep both formats and the file names when replacing one.
 - Every image needs a meaningful `alt`; use `<Image>` from `astro:assets` with images from `src/assets/images/`.
 - No third-party CDNs and no secrets in the repo. `.env*` and `.vercel/` are git-ignored; keep it that way.
 - Ask the user before pushing to `main` (it goes live immediately). Never force-push.

@@ -53,10 +53,11 @@ the GitHub MCP (needs `export GITHUB_PERSONAL_ACCESS_TOKEN=...`). Both are optio
 | Testimonials (carousel, dots, arrows follow automatically) | `src/data/testimonials.ts` |
 | Header, footer, buttons, hero, cards | `src/components/*.astro` |
 | `<head>`, SEO, favicon links, page transitions | `src/layouts/Layout.astro` |
-| Colours, spacing, fonts (design tokens at the top) | `src/styles/global.css` |
+| Colours, spacing, type sizes (design tokens at the top) | `src/styles/global.css` |
+| Webfonts (Alaska, `.woff2` + `.woff`) and their `@font-face` | `src/assets/fonts/alaska/` (read its README), `src/styles/fonts.css`; preloads in `src/layouts/Layout.astro` |
 | Carousel / nav behaviour | `src/scripts/carousel.ts`, `src/scripts/site.ts` |
 | Images (use `<Image>` from `astro:assets`) | `src/assets/images/` |
-| Fonts, favicon, robots.txt (served as-is) | `public/` |
+| Favicon, robots.txt (served as-is) | `public/` |
 | Build output, security + cache headers | `vercel.json` |
 
 Conventions:

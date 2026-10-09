@@ -46,9 +46,11 @@ src/
 │   ├── site.ts            email, booking link, LinkedIn, address, nav items  <- edit contact details here
 │   └── testimonials.ts    testimonials shown in the carousel                 <- edit/add testimonials here
 ├── scripts/               carousel.ts (Swiper), site.ts (active nav, header state)
-├── styles/                global.css (design tokens at the top), fonts.css
-└── assets/images/         photos and logos (optimised at build time by Astro)
-public/                    served as-is: fonts/, favicon.svg, favicon-32.png, apple-touch-icon.png, robots.txt
+├── styles/                global.css (design tokens at the top), fonts.css (@font-face)
+└── assets/
+    ├── images/            photos and logos (optimised at build time by Astro)
+    └── fonts/alaska/      Alaska webfonts, .woff2 + .woff (see the README in that folder)
+public/                    served as-is: favicon.svg, favicon-32.png, apple-touch-icon.png, robots.txt
 vercel.json                build/output settings, security + cache headers
 ```
 
