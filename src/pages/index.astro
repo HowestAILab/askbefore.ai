@@ -24,15 +24,14 @@ const cellSizes = "(max-width: 900px) 100vw, 50vw";
           <p>We zijn een team van AI-specialisten van Howest, met een stevige achtergrond in business, marketing en IT.</p>
           <p>We helpen organisaties om AI slim en gericht in te zetten. Je krijgt onafhankelijk advies, praktische workshops en concrete prototypes van een academische partner.</p>
         </div>
-        <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
+        <div class="intro-aside">
+          <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
+          <a class="powered-by" href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
+            <Image src={poweredBy} alt="Powered by Howest" width={480} loading="eager" />
+          </a>
+        </div>
       </div>
     </section>
-
-    <div class="wrap powered-by">
-      <a href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
-        <Image src={poweredBy} alt="Powered by Howest" width={480} loading="eager" />
-      </a>
-    </div>
   </div>
 
   <section class="wrap">

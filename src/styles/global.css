@@ -440,26 +440,16 @@ a.footer-howest:hover { opacity: .75; }
   flex-direction: column;
   padding-bottom: clamp(12px, 2vh, 28px);
 }
-/* "Powered by Howest" under the purple block, only on the first screen of the home page */
-.powered-by {
+/* "Powered by Howest" under the button in the purple block, right-aligned */
+.intro-aside {
   display: flex;
-  justify-content: center;
-  margin-top: clamp(14px, 2.2vh, 24px);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(16px, 2vw, 28px);
 }
-/* dark logo in a white pill, like the footer block */
-.powered-by a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* runs the full width of the content, like the purple block above */
-  line-height: 0;
-  background: var(--purple-pale);
-  border-radius: var(--radius-pill);
-  padding: clamp(15px, 1.3vw, 22px) clamp(22px, 2.2vw, 34px);
-  transition: opacity .15s ease;
-}
-.powered-by a:hover { opacity: .85; }
-.powered-by img { height: clamp(30px, 2.6vw, 44px); width: auto; }
+.powered-by { display: block; line-height: 0; transition: opacity .15s ease; }
+.powered-by:hover { opacity: .75; }
+.powered-by img { height: clamp(24px, 2vw, 34px); width: auto; }
 .page-title-row {
   flex: 1;
   display: flex;
@@ -801,6 +791,7 @@ a.footer-howest:hover { opacity: .75; }
   .nav-pills a { padding: 10px 16px; font-size: .85rem; }
   .intro-screen { min-height: 0; padding-bottom: 32px; }
   .intro-box { flex-direction: column; align-items: flex-start; }
+  .intro-aside { align-self: stretch; }
   .cta-bar { flex-wrap: nowrap; }
   .site-footer .wrap { grid-template-columns: 1fr; }
   .testimonial-swiper .swiper-slide { width: clamp(220px, 78vw, 300px); }
