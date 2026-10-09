@@ -7,7 +7,7 @@ files are the originals; the `.woff2` files are lossless builds of them (identic
 | --- | --- | --- | --- |
 | `alaska-light` | Alaska Light 3.000 | `Alaska Light` | body text, menu pills (`--font-body`) |
 | `alaska-bold` | Alaska Bold 3.000 | `Alaska Bold` | buttons, CTA bars, labels, footer headings (`--font-heading`) |
-| `alaska-expanded` | Alaska Expanded Contrast 3.000 | `Alaska Expanded` | the intro line on the Aanbod page (`--font-display-2`) |
+| `alaska-expanded` | Alaska Expanded Contrast 3.000 | `Alaska Expanded` | the intro texts in the purple block on Over ons and on the Aanbod page (`--font-display-2`) |
 | `alaska-expanded-bold` | AlaskaBeta-ExpBoldContrast 2.000 | `Alaska Expanded Bold` | headlines, section and card titles (`--font-display-1`) |
 
 Notes

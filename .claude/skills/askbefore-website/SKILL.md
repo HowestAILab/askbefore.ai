@@ -63,7 +63,7 @@ the GitHub MCP (needs `export GITHUB_PERSONAL_ACCESS_TOKEN=...`). Both are optio
 Conventions:
 
 - All visitor-facing text is **Dutch**. Match the tone of the surrounding copy.
-- Purple *text* uses `--purple-ink` or `--purple-strong`. The bright `--purple` is for backgrounds only (it fails contrast).
+- Colours: only the client palette tokens at the top of `src/styles/global.css`. Purple *text* uses `--purple-deep` (same value as `--purple`); contrast on cream is low, so keep it to large text.
 - Every image needs meaningful `alt` text. Put new images in `src/assets/images/`; Astro makes responsive WebP.
 - To add a page: create `src/pages/<name>.astro` wrapped in `Layout`, add it to `NAV` in `src/data/site.ts`.
 - The "LinkedIn" footer column appears only when `linkedin` is set in `src/data/site.ts`.
