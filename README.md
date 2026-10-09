@@ -16,10 +16,15 @@ npm run doctor             # checks everything and tells you what is missing
 claude                     # then just describe the change you want, in Dutch or English
 ```
 
-The project ships a Claude skill (`.claude/skills/askbefore-website/`) and a `CLAUDE.md`, so Claude already knows the
-structure, the checks to run and the publish flow. Example requests: *"Pas de tekst van traject 2 aan"*, *"Voeg een
-testimonial van Acme toe"*, *"Maak een preview van deze wijziging"*, *"Publiceer naar productie"*. Claude asks before
-anything goes live: pushing to `main` deploys to https://askbefore.ai.
+The project ships a Claude skill (`.claude/skills/askbefore-website/`), a `CLAUDE.md` and a safety hook
+(`scripts/guard.mjs`), so Claude already knows the structure, the checks to run and the publish flow. Example requests: *"Pas de tekst van traject 2 aan"*, *"Voeg een
+testimonial van Acme toe"*, *"Maak een preview van deze wijziging"*, *"Maak een pull request"*.
+
+**How publishing works:** you work on a branch and open a pull request; a repo owner reviews and merges it into `main`,
+which deploys to https://askbefore.ai. As a contributor you never push to `main` or merge your own PR. Claude is also
+blocked from forking the repo, changing git remotes, force-pushing and touching Vercel settings. If something fails
+(for example a push is refused), stop and ask a repo owner; do not work around it. Login is done by you:
+`! gh auth login` in the Claude prompt.
 
 ## Run locally
 
