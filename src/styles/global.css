@@ -446,20 +446,20 @@ a.footer-howest:hover { opacity: .75; }
   justify-content: center;
   margin-top: clamp(14px, 2.2vh, 24px);
 }
-/* white logo in a plum pill, like the buttons */
+/* dark logo in a white pill, like the footer block */
 .powered-by a {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%; /* runs the full width of the content, like the purple block above */
   line-height: 0;
-  background: var(--plum);
+  background: var(--white);
   border-radius: var(--radius-pill);
   padding: clamp(15px, 1.3vw, 22px) clamp(22px, 2.2vw, 34px);
   transition: opacity .15s ease;
 }
 .powered-by a:hover { opacity: .85; }
-.powered-by img { height: clamp(22px, 1.9vw, 30px); width: auto; }
+.powered-by img { height: clamp(30px, 2.6vw, 44px); width: auto; }
 .page-title-row {
   flex: 1;
   display: flex;
