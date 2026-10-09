@@ -1,0 +1,8 @@
+---
+// Small fixed Howest logo, bottom left, lined up with the left edge of the content blocks.
+import { Image } from "astro:assets";
+import logo from "../assets/images/howest-logo.png";
+---
+<a class="howest-fixed" href="https://www.howest.be" target="_blank" rel="noopener noreferrer" transition:persist>
+  <Image src={logo} alt="Howest, university of applied sciences" width={160} loading="eager" />
+</a>

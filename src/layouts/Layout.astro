@@ -4,6 +4,7 @@ import { getImage } from "astro:assets";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FooterLegal from "../components/FooterLegal.astro";
+import HowestBadge from "../components/HowestBadge.astro";
 import ogSource from "../assets/images/team-van-askbefore-ai-in-overleg.jpg";
 import { SITE } from "../data/site";
 // Hashed URLs of the fonts used on every page (identical to the ones fonts.css references).
@@ -77,6 +78,7 @@ const preloadFonts = [alaskaLight, alaskaBold, alaskaExpanded, alaskaExpandedBol
       <Footer />
     </div>
     <FooterLegal />
+    <HowestBadge />
     <noscript><style>[data-reveal] { animation: none !important; } .testimonial-swiper { opacity: 1 !important; }</style></noscript>
     <script>
       import "../scripts/site";
