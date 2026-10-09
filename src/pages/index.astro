@@ -15,7 +15,12 @@ const cellSizes = "(max-width: 900px) 100vw, 50vw";
 <Layout>
   <div class="intro-screen">
     <section class="wrap page-title-row">
-      <h1>Eerst vragen.<br /><span class="accent">Dan pas versnellen.</span></h1>
+      <div class="title-block">
+        <h1>Eerst vragen.<br /><span class="accent">Dan pas versnellen.</span></h1>
+        <a class="powered-by" href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
+          <Image src={poweredBy} alt="Powered by Howest" width={480} loading="eager" />
+        </a>
+      </div>
     </section>
 
     <section class="wrap">
@@ -24,12 +29,7 @@ const cellSizes = "(max-width: 900px) 100vw, 50vw";
           <p>We zijn een team van AI-specialisten van Howest, met een stevige achtergrond in business, marketing en IT.</p>
           <p>We helpen organisaties om AI slim en gericht in te zetten. Je krijgt onafhankelijk advies, praktische workshops en concrete prototypes van een academische partner.</p>
         </div>
-        <div class="intro-aside">
-          <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
-          <a class="powered-by" href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
-            <Image src={poweredBy} alt="Powered by Howest" width={480} loading="eager" />
-          </a>
-        </div>
+        <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
       </div>
     </section>
   </div>

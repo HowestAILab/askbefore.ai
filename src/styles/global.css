@@ -440,13 +440,8 @@ a.footer-howest:hover { opacity: .75; }
   flex-direction: column;
   padding-bottom: clamp(12px, 2vh, 28px);
 }
-/* "Powered by Howest" under the button in the purple block, right-aligned */
-.intro-aside {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: clamp(16px, 2vw, 28px);
-}
+/* "Powered by Howest" under the home title */
+.title-block { display: flex; flex-direction: column; align-items: flex-start; gap: clamp(14px, 1.6vw, 24px); }
 .powered-by { display: block; line-height: 0; transition: opacity .15s ease; }
 .powered-by:hover { opacity: .75; }
 .powered-by img { height: clamp(24px, 2vw, 34px); width: auto; }
@@ -791,7 +786,6 @@ a.footer-howest:hover { opacity: .75; }
   .nav-pills a { padding: 10px 16px; font-size: .85rem; }
   .intro-screen { min-height: 0; padding-bottom: 32px; }
   .intro-box { flex-direction: column; align-items: flex-start; }
-  .intro-aside { align-self: stretch; }
   .cta-bar { flex-wrap: nowrap; }
   .site-footer .wrap { grid-template-columns: 1fr; }
   .testimonial-swiper .swiper-slide { width: clamp(220px, 78vw, 300px); }
