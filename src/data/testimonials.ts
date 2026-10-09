@@ -16,10 +16,7 @@ export const testimonials: Testimonial[] = [
     company: "Barco",
     logo: barco,
     quote: [
-      "We zoeken het uit op drie niveaus.",
-      "Je mensen: waar worden ze nog beter in wat ze al goed doen?",
-      "Je processen: wat kan vlotter, en wat pak je fundamenteel anders aan?",
-      "Je toekomst: welk nieuw product of dienst wordt plots haalbaar?",
+      "AI inzetten begint niet bij de technologie, maar bij het kritisch bekijken van je processen. Door onze communicatieworkflows stap voor stap te ontleden, zie je veel duidelijker waar AI echt waarde toevoegt en waar een eenvoudige automatisatie volstaat. Daar heeft HOWEST ons sterk mee geholpen. Het traject was heel verhelderend, maar nu begint het echte werk: onze learnings implementeren.",
     ],
     author: "Eva Careel, Head of Corporate Brand and Communications bij Barco",
   },
@@ -32,16 +29,11 @@ export const testimonials: Testimonial[] = [
     author: "Matthieu Devriendt, Grandeco",
   },
   {
-    // TODO(content): this entry still carries the Barco quote from the original site.
-    // Replace it with a real Howest testimonial.
     company: "Howest",
     logo: howest,
     quote: [
-      "We zoeken het uit op drie niveaus.",
-      "Je mensen: waar worden ze nog beter in wat ze al goed doen?",
-      "Je processen: wat kan vlotter, en wat pak je fundamenteel anders aan?",
-      "Je toekomst: welk nieuw product of dienst wordt plots haalbaar?",
+      "Kort op de bal, helder in communicatie en gewoon goed werk geleverd.",
     ],
-    author: "Eva Careel, Head of Corporate Brand and Communications bij Barco",
+    author: "Annelies Geneyn, Diensthoofd Werving, PR en Communicatie Howest",
   },
 ];

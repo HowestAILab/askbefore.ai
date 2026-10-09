@@ -440,22 +440,22 @@ a.footer-howest:hover { opacity: .75; }
   flex-direction: column;
   padding-bottom: clamp(12px, 2vh, 28px);
 }
-/* "Powered by Howest": beige logo in a plum pill button above the purple block, links to howest.be */
+/* "Powered by Howest": beige logo in a plum pill, in the purple block where the button used to be.
+   A hidden copy of the "Ga naar ons aanbod" button sets the size, so both are always equally big. */
+.powered-pill { display: inline-grid; }
+.powered-pill > * { grid-area: 1 / 1; }
+.powered-pill > .btn-pill { visibility: hidden; pointer-events: none; }
 .powered-by {
   display: flex;
   align-items: center;
-  width: fit-content;
-  /* the logo itself (not the pill) lines up with the text inside the purple block */
-  --pb-pad-x: clamp(16px, 1.4vw, 22px);
-  margin: 0 0 clamp(6px, 0.7vw, 10px) calc(clamp(24px, 4vw, 44px) - var(--pb-pad-x));
+  justify-content: center;
   line-height: 0;
   background: var(--plum);
   border-radius: var(--radius-pill);
-  padding: clamp(11px, 0.9vw, 14px) var(--pb-pad-x);
   transition: opacity .15s ease;
 }
 .powered-by:hover { opacity: .85; }
-.powered-by img { height: clamp(15px, 1.1vw, 19px); width: auto; }
+.powered-by img { height: clamp(17px, 1.5vw, 26px); width: auto; }
 .page-title-row {
   flex: 1;
   display: flex;
@@ -489,7 +489,7 @@ a.footer-howest:hover { opacity: .75; }
 .intro-box {
   background: var(--purple);
   border-radius: var(--radius-lg);
-  padding: clamp(24px, 4vw, 44px);
+  padding: clamp(32px, 5vw, 60px) clamp(24px, 4vw, 44px);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -797,6 +797,7 @@ a.footer-howest:hover { opacity: .75; }
   .nav-pills a { padding: 10px 16px; font-size: .85rem; }
   .intro-screen { min-height: 0; padding-bottom: 32px; }
   .intro-box { flex-direction: column; align-items: flex-start; }
+  .intro-copy { flex: 0 0 auto; } /* no 320px minimum height in the column layout */
   .cta-bar { flex-wrap: nowrap; }
   .site-footer .wrap { grid-template-columns: 1fr; }
   .testimonial-swiper .swiper-slide { width: clamp(220px, 78vw, 300px); }
@@ -874,7 +875,6 @@ a.footer-howest:hover { opacity: .75; }
   .cta-bar { gap: 14px; padding-left: 22px; }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
   .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
-  .intro-box { padding: 24px 22px; }
-  .powered-by { margin-left: calc(22px - var(--pb-pad-x)); }
+  .intro-box { padding: 32px 22px; }
   .site-footer { padding: 24px 0; }
 }
