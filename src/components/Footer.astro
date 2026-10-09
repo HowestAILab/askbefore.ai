@@ -13,12 +13,10 @@ import { SITE } from "../data/site";
       <h4>jobs</h4>
       <p>Stuur je motivatie naar <a class="footer-link" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
     </div>
-    {SITE.linkedin && (
-      <div>
-        <h4>Blijf op de hoogte</h4>
-        <p><a class="footer-link" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-      </div>
-    )}
+    <div>
+      <h4>Blijf op de hoogte</h4>
+      <p><a class="footer-link" href={SITE.linkedin || "#"} {...SITE.linkedin ? { target: "_blank", rel: "noopener noreferrer" } : {}}>LinkedIn</a></p>
+    </div>
     <a class="footer-howest" href="https://www.howest.be" target="_blank" rel="noopener noreferrer">
       <span>een dienst van</span>
       <Image src={howestLogo} alt="Howest, university of applied sciences" width={260} loading="lazy" />

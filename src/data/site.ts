@@ -8,7 +8,7 @@ export const SITE = {
   email: "hello@askbefore.ai",
   bookingUrl:
     "https://bookings.cloud.microsoft/book/askbeforeai@hogeschool-wvl.be/?ismsaljsauthenabled",
-  // Set this to the company LinkedIn page URL to show the "Blijf op de hoogte" column in the footer.
+  // Company LinkedIn page URL for the "Blijf op de hoogte" column in the footer (empty = the link goes nowhere yet).
   linkedin: "",
   address: {
     place: "The Penta, Howest",
