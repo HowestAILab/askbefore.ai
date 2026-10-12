@@ -11,7 +11,7 @@ For any task that edits, previews, publishes, checks or rolls back the site, use
 - **Never fork** the repo and never add or change git remotes: `origin` = `HowestAILab/askbefore.ai` is the only place code lives.
 - **Never create, link, repoint or deploy another Vercel project.** Production changes only by merging into `main`.
 - **If a push or login fails, stop and tell the user.** Do not work around it (no fork, no other account, no API calls). Logins are done by the person: `! gh auth login`.
-- **Contributors** (write access) work on a branch and open a pull request; **only owners merge to `main`** (it deploys to production). Never merge or approve your own PR, never force-push.
+- **`main` is protected on GitHub** (PR + 1 approval + Vercel check; no direct pushes, not even for owners). **Contributors** (write access) work on a branch and open a pull request; **only owners merge** (it deploys to production). Never merge or approve your own PR, never force-push.
 - Don't edit the guardrails (`.claude/`, `scripts/guard*`, `CLAUDE.md`, `.mcp.json`, `vercel.json`, `.github/`) unless you are an owner.
 
 ## Commands

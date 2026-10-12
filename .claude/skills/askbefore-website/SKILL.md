@@ -39,7 +39,7 @@ above (it explains why when it blocks something), and the repo owner can lock `m
 
 ### Roles
 
-- **Owner**: `ADMIN`/`MAINTAIN` on the GitHub repo. May merge to `main`, change settings, administer Vercel.
+- **Owner**: `ADMIN`/`MAINTAIN` on the GitHub repo. May merge PRs into `main` (including admin-bypass of the review requirement), change settings, administer Vercel.
 - **Contributor**: `WRITE`. Edits content and code on a branch and opens a PR; an owner merges.
 - Not logged in / unknown = contributor. `npm run doctor` prints which one you are.
 
@@ -107,7 +107,7 @@ Conventions:
 - Every image needs meaningful `alt` text. Put new images in `src/assets/images/`; Astro makes responsive WebP.
 - To add a page: create `src/pages/<name>.astro` wrapped in `Layout`, add it to `NAV` in `src/data/site.ts`.
 - The "LinkedIn" footer link points nowhere until `linkedin` is set in `src/data/site.ts`.
-- Known content TODOs: the Howest testimonial still holds Barco's quote; Privacy and Terms are placeholders.
+- Known content TODOs: Privacy and Terms are placeholders; the footer LinkedIn link has no URL yet.
 
 ## 4. Edit, check, publish
 
@@ -124,8 +124,10 @@ Conventions:
 7. **Pull request.** `gh pr create --base main --head <topic> --title "..." --body "..."` (head is always a branch of this repo,
    never `someone:branch`). Describe what changed and attach the preview URL. **Stop here as a contributor** and tell the user
    an owner has to review and merge. Do not merge or approve it yourself.
-8. **Owner only: go live.** Merge the PR on GitHub (or `gh pr merge`), after reviewing the diff and the preview. Ask the
-   user for an explicit go-ahead first: it goes live within about a minute. Then confirm the deploy (section 5).
+8. **Owner only: go live.** Review the diff and the preview, then merge the PR on GitHub (or `gh pr merge <n> --squash`; add
+   `--admin` to merge your own PR or one still waiting for a review, which only admins can do). Ask the user for an explicit
+   go-ahead first: it goes live within about a minute. Then confirm the deploy (section 5). `main` is protected (section 8):
+   nobody, owners included, can push to it directly.
 
 ## 5. Check a deployment
 
@@ -148,6 +150,7 @@ open a PR and merge it. In an emergency an owner can restore the previous produc
 | --- | --- |
 | `Permission denied (publickey)` on push | No SSH key on GitHub. Add one at https://github.com/settings/keys, or re-clone over HTTPS (`git clone https://github.com/HowestAILab/askbefore.ai.git`) and `! gh auth login`. Do not edit remotes |
 | `remote: Permission to ... denied` / `403` | No write access, or the invitation was not accepted. Owner adds the person as collaborator; person accepts. **Never fork** |
+| `remote: error: GH013: Repository rule violations` when pushing to `main` | `main` is protected on purpose: push a branch and open a PR instead (`git switch -c <topic>`, `git push -u origin <topic>`, `gh pr create`). Not a bug, not something to bypass |
 | Push rejected (non-fast-forward) | Someone pushed first: `git pull --rebase origin main`, re-run `npm run verify`, push again (never force) |
 | Guard says "Blocked" | Read the message. It is intentional. Stop and tell the user; an owner can do it or change the rule |
 | Push works but nothing deploys / deployment "Blocked" | Check `git config user.email` is a verified email on the committer's GitHub account and that their Vercel account is connected to GitHub. Because the repo is **public**, commits from non-owners deploy fine on the current Hobby plan (verified Oct 2026). If the repo ever becomes private, Vercel needs a Pro plan with the person added as a member |
@@ -155,11 +158,17 @@ open a PR and merge it. In an emergency an owner can restore the previous produc
 | `askbefore.ai` shows a GoDaddy "parking" page | DNS/cache issue on the viewer's network, not the site. Check `https://askbefore-ai.vercel.app`; DNS records are in GoDaddy (A `@` → `216.198.79.1`, `64.29.17.1`; CNAME `www`) |
 | Port 4321 busy | `npm run dev -- --port 4322` |
 
-## 8. Owner checklist: lock it down for real
+## 8. How `main` is locked (GitHub ruleset "Protect main", active since 2026-10-12)
 
-The guard protects against the AI improvising; GitHub is what protects against everything else. Owners should enable (once):
+The guard protects against the AI improvising; this GitHub ruleset protects against everything else. It applies to everyone:
 
-- Branch protection / ruleset on `main`: require a pull request, at least 1 approval, require review from Code Owners
-  (`.github/CODEOWNERS`), block force pushes and deletions, and do not allow the PR author to approve their own PR.
-- Keep Vercel "Git fork protection" on (it is) and the project connected to `HowestAILab/askbefore.ai` only.
-- Give colleagues **Write**, not Admin; never share a Vercel or GitHub login between people.
+- Changes reach `main` only through a **pull request** with **1 approval**; approvals are dismissed when new commits are pushed,
+  and the person who pushed last cannot approve (no self-approval).
+- Files listed in `.github/CODEOWNERS` (`.claude/`, `scripts/`, `.github/`, `CLAUDE.md`, `.mcp.json`, `vercel.json`,
+  `package.json`, `astro.config.mjs`) additionally need review from their code owner.
+- The **Vercel** status check (the preview build) must pass.
+- No force-pushes, no deleting `main`, **no direct pushes** (admins can bypass only by merging a PR).
+
+Owners: see/change it at https://github.com/HowestAILab/askbefore.ai/settings/rules. Also keep Vercel "Git fork protection" on
+(it is) and the project connected to `HowestAILab/askbefore.ai` only. Give colleagues **Write**, not Admin, and never share a
+Vercel or GitHub login between people.
