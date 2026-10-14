@@ -97,12 +97,12 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(0.82rem, 0.82vw, 1.05rem);
 }
 .logo img {
-  height: 2.3em;
+  height: 1.4em; /* the wordmark is 8.5 : 1, so it needs far less height than the old logo */
   width: auto;
   transition: height .25s ease;
 }
 .site-header.is-scrolled .logo img {
-  height: 1.68em;
+  height: 1.02em;
 }
 .nav-pills {
   display: flex;
