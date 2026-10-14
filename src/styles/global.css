@@ -786,7 +786,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   padding: clamp(26px, 3vw, 46px) 24px;
   border-radius: var(--radius-pill);
   background: var(--plum);
-  color: var(--white);
+  color: var(--cream);
   font-family: var(--font-display-1);
   font-size: clamp(1.4rem, 1.8vw, 2.2rem);
   line-height: 1.1;
