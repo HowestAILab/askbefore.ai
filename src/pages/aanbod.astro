@@ -1,17 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
 import WatWeDoen from "../components/WatWeDoen.astro";
 import CtaBlock from "../components/CtaBlock.astro";
-import heroAanbod from "../assets/images/hero-aanbod.png";
 import publiek from "../assets/images/publiek-kijkt-naar-presentatie.jpg";
 ---
 <Layout
   title="Aanbod"
   description="Kies hoe je start: AI-implementatie in workflows, met of zonder proof of concepts, of leer agents bouwen met agentic content creation."
 >
-  <Hero image={heroAanbod} alt="Deelnemers bespreken een workflow met post-its op een houten bord tijdens een workshop" variant="tall">Kies hoe je start.</Hero>
-
   <WatWeDoen photo={publiek} photoAlt="Publiek volgt een presentatie op grote schermen tijdens een evenement" />
 
   <CtaBlock />
