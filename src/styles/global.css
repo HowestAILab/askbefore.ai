@@ -30,6 +30,10 @@
 @media (max-width: 1600px) {
   :root { --gutter: clamp(6px, 0.6vw, 12px); }
 }
+/* large screens: clearly more room left and right */
+@media (min-width: 1601px) {
+  :root { --gutter: clamp(60px, 4.5vw, 140px); }
+}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 110px; }
@@ -781,7 +785,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   margin: 0 0 clamp(6px, 0.6vw, 12px);
   padding: clamp(26px, 3vw, 46px) 24px;
   border-radius: var(--radius-pill);
-  background: var(--charcoal);
+  background: var(--plum);
   color: var(--white);
   font-family: var(--font-display-1);
   font-size: clamp(1.4rem, 1.8vw, 2.2rem);
@@ -844,7 +848,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 }
 .btn-pill--wide .arrow-sm { width: clamp(40px, 3.4vw, 64px); height: clamp(40px, 3.4vw, 64px); }
 .btn-pill--wide .arrow-sm svg { width: clamp(16px, 1.4vw, 26px); height: clamp(16px, 1.4vw, 26px); }
-.team { margin-top: clamp(56px, 7vw, 120px); margin-bottom: clamp(56px, 7vw, 120px); }
+.team { margin-top: clamp(88px, 11vw, 200px); margin-bottom: clamp(96px, 12vw, 220px); }
 .team-grid {
   list-style: none;
   margin: 0;
@@ -852,10 +856,12 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(24px, 3vw, 56px);
+  max-width: var(--cta-row-width); /* same width as the buttons at the bottom of the page */
+  margin-inline: auto;
   text-align: center;
 }
 .team-member img {
-  width: min(100%, 330px);
+  width: min(100%, 250px);
   height: auto;
   aspect-ratio: 1;
   border-radius: 50%;
