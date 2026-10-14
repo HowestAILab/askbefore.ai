@@ -3,10 +3,11 @@ import ArrowIcon from "./ArrowIcon.astro";
 
 interface Props {
   href: string;
+  class?: string;
 }
-const { href } = Astro.props;
+const { href, class: extra } = Astro.props;
 ---
-<a class="btn-pill" href={href}>
+<a class:list={["btn-pill", extra]} href={href}>
   <slot />
   <span class="arrow-sm"><ArrowIcon /></span>
 </a>
