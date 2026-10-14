@@ -797,7 +797,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(6px, 0.6vw, 12px);
   align-items: start;
-  margin-bottom: 40px;
+  margin-bottom: 0; /* the button below sits at the same distance as the blocks */
 }
 .traject-split .wwd-cell.photo {
   grid-column: 1;
@@ -828,7 +828,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 }
 
 /* ===== Meer weten + Meet the Strategists (home) ===== */
-.more-trajects { margin-top: clamp(24px, 3vw, 48px); }
+.more-trajects { margin-top: clamp(6px, 0.6vw, 12px); }
 .btn-pill.btn-pill--wide {
   display: flex;
   width: 100%;
