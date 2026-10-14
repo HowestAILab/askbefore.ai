@@ -608,7 +608,7 @@ a.footer-howest:hover { opacity: .75; }
 .testimonial-swiper .swiper-slide:active { cursor: grabbing; }
 /* The card is a real flip-card: a static perspective box around an inner
    element that rotates 180° in 3D. Two faces sit back-to-back inside it —
-   the "achterkant" (logo centred on plum) and the "voorkant" (quote +
+   the "achterkant" (logo centred on charcoal) and the "voorkant" (quote +
    author) — each hidden via backface-visibility until the inner element
    has turned to face it. Only the active (centred) slide flips; the rest
    stay resting on their back, the way lifeatspotify.com's coverflow
@@ -646,14 +646,14 @@ a.footer-howest:hover { opacity: .75; }
   -webkit-backface-visibility: hidden;
 }
 .testimonial-face-back {
-  background: var(--plum);
+  background: var(--charcoal);
 }
 .testimonial-face-front {
   position: relative;
   inset: auto;
   height: 100%;
   min-height: var(--card-min);
-  background: var(--purple-mist);
+  background: var(--blue);
   justify-content: flex-start;
   transform: rotateY(180deg);
 }
@@ -682,7 +682,7 @@ a.footer-howest:hover { opacity: .75; }
 .testimonial-author {
   margin: auto 0 0;
   padding-top: clamp(18px, 2vw, 26px);
-  color: var(--purple-deep);
+  color: var(--plum); /* purple has too little contrast on the blue card */
   font-family: var(--font-heading);
   font-style: italic;
   font-size: clamp(0.85rem, .9vw, .98rem);
