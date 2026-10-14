@@ -754,7 +754,8 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 }
 .wwd-cell.dark img { width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: transform .5s ease, opacity .3s ease; }
 .wwd-cell.dark:hover img { transform: scale(1.05); opacity: .95; }
-.wwd-cell h3 {
+.wwd-cell h3,
+.wwd-cell h4 {
   font-family: var(--font-display-1);
   color: var(--plum);
   font-size: clamp(1.7rem, 1.8vw, 2.2rem);
@@ -767,6 +768,55 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   color: var(--plum);
   font-size: clamp(0.95rem, 1vw, 1.15rem);
   line-height: 1.55;
+}
+
+/* ===== Wat we doen: traject split (home) =====
+   A dark bar, then the first photo stays in view (sticky) while the two blue text blocks scroll past it.
+   --header-h is set from the real header height in src/scripts/site.ts (96px until it runs). */
+.traject-bar {
+  margin: 0 0 clamp(6px, 0.6vw, 12px);
+  padding: clamp(26px, 3vw, 46px) 24px;
+  border-radius: var(--radius-pill);
+  background: var(--charcoal);
+  color: var(--white);
+  font-family: var(--font-display-1);
+  font-size: clamp(1.4rem, 1.8vw, 2.2rem);
+  line-height: 1.1;
+  text-align: center;
+}
+.traject-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(6px, 0.6vw, 12px);
+  align-items: start;
+  margin-bottom: 40px;
+}
+.traject-split .wwd-cell.photo {
+  grid-column: 1;
+  grid-row: 1 / span 2; /* spans both text blocks, so it has room to stay put while they pass */
+  position: sticky;
+  top: calc(var(--header-h, 96px) + clamp(8px, 1vw, 16px));
+  max-height: calc(100svh - var(--header-h, 96px) - 32px); /* never taller than the screen */
+}
+.traject-split .wwd-cell.photo img { position: absolute; inset: 0; }
+.traject-split .wwd-cell.text { grid-column: 2; }
+.wwd-cell p.wwd-lead { font-family: var(--font-heading); }
+.wwd-list {
+  margin: 0;
+  padding-left: 1.15em;
+  display: grid;
+  gap: .45em;
+  color: var(--plum);
+  font-size: clamp(0.95rem, 1vw, 1.15rem);
+  line-height: 1.55;
+}
+.wwd-list strong { font-family: var(--font-heading); font-weight: normal; }
+@media (max-width: 900px) {
+  .traject-bar { font-size: clamp(1rem, 5vw, 1.5rem); padding-inline: 16px; }
+  .traject-split { grid-template-columns: 1fr; }
+  .traject-split .wwd-cell.photo { position: static; grid-column: auto; grid-row: auto; max-height: none; }
+  .traject-split .wwd-cell.photo img { position: static; }
+  .traject-split .wwd-cell.text { grid-column: auto; }
 }
 
 /* ===== Diagram ===== */

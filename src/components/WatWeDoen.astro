@@ -1,9 +1,11 @@
 ---
-// "Wat we doen": the four-block grid (knowledge, making, research) plus the diagram.
-// Shared by the home page and the Aanbod page. Only the first (photo) block can be swapped.
+// "Wat we doen": heading, then either the four-block grid (knowledge, making, research)
+// or the "AI Transformatietrajecten" split with a sticky photo, then the diagram.
+// Shared by the home page and the Aanbod page.
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import BtnPill from "./BtnPill.astro";
+import TrajectSplit from "./TrajectSplit.astro";
 import workshop from "../assets/images/workshop-over-ai-workflows.jpg";
 import agent from "../assets/images/voorbeeld-van-een-ai-content-agent-workflow.jpg";
 import panel from "../assets/images/panelgesprek-over-ai.jpg";
@@ -13,46 +15,52 @@ interface Props {
   /** Image in the first block (top left). Defaults to the workshop photo. */
   photo?: ImageMetadata;
   photoAlt?: string;
+  /** "blokken" = the original grid, "traject" = dark bar + sticky photo with two text blocks. */
+  variant?: "blokken" | "traject";
 }
-const { photo = workshop, photoAlt = "Workshop over AI-workflows" } = Astro.props;
+const { photo = workshop, photoAlt = "Workshop over AI-workflows", variant = "blokken" } = Astro.props;
 
 const cellSizes = "(max-width: 900px) 100vw, 50vw";
 ---
 <section class="wrap" id="wat-we-doen">
   <h2 class="section-heading">Wat we doen</h2>
-  <div class="wwd-grid">
-    <div class="wwd-cell photo" data-reveal>
-      <Image src={photo} alt={photoAlt} widths={[480, 800, 1200]} sizes={cellSizes} />
-    </div>
-    <div class="wwd-cell text" data-reveal>
-      <h3>We delen kennis</h3>
-      <div class="wwd-body">
-        <p>Via onze trajecten, gebaseerd op wetenschappelijk onderzoek, begeleiden we de integratie van AI in de dagelijkse werking van teams en individuen. We bekijken samen de dagelijkse processen van dichtbij en begeleiden je medewerkers van passieve uitvoerders naar bewuste regisseurs.</p>
-        <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
+  {variant === "traject" ? (
+    <TrajectSplit photo={photo} photoAlt={photoAlt} />
+  ) : (
+    <div class="wwd-grid">
+      <div class="wwd-cell photo" data-reveal>
+        <Image src={photo} alt={photoAlt} widths={[480, 800, 1200]} sizes={cellSizes} />
       </div>
-    </div>
+      <div class="wwd-cell text" data-reveal>
+        <h3>We delen kennis</h3>
+        <div class="wwd-body">
+          <p>Via onze trajecten, gebaseerd op wetenschappelijk onderzoek, begeleiden we de integratie van AI in de dagelijkse werking van teams en individuen. We bekijken samen de dagelijkse processen van dichtbij en begeleiden je medewerkers van passieve uitvoerders naar bewuste regisseurs.</p>
+          <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
+        </div>
+      </div>
 
-    <div class="wwd-cell text" data-reveal>
-      <h3>We maken</h3>
-      <div class="wwd-body">
-        <p>Kennis krijgt pas waarde in de uitvoering. Op basis van onderzoek en ervaring ontwerpen en bouwen we proof of concepts, tools, AI agents. Altijd menselijk, altijd op maat van je organisatie.</p>
-        <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
+      <div class="wwd-cell text" data-reveal>
+        <h3>We maken</h3>
+        <div class="wwd-body">
+          <p>Kennis krijgt pas waarde in de uitvoering. Op basis van onderzoek en ervaring ontwerpen en bouwen we proof of concepts, tools, AI agents. Altijd menselijk, altijd op maat van je organisatie.</p>
+          <BtnPill href="/aanbod">Ga naar ons aanbod</BtnPill>
+        </div>
       </div>
-    </div>
-    <div class="wwd-cell dark" data-reveal>
-      <Image src={agent} alt="Voorbeeld van een AI content agent workflow" widths={[480, 800, 1200]} sizes={cellSizes} />
-    </div>
+      <div class="wwd-cell dark" data-reveal>
+        <Image src={agent} alt="Voorbeeld van een AI content agent workflow" widths={[480, 800, 1200]} sizes={cellSizes} />
+      </div>
 
-    <div class="wwd-cell photo" data-reveal>
-      <Image src={panel} alt="Panelgesprek over AI" widths={[480, 800, 1200]} sizes={cellSizes} />
-    </div>
-    <div class="wwd-cell text" data-reveal>
-      <h3>We onderzoeken</h3>
-      <div class="wwd-body">
-        <p>Onze basis ligt in toegepast onderzoek vanuit Howest. Via lopende onderzoeksprojecten testen we voortdurend wat écht werkt. Geen vluchtige hypes, wel onderbouwde inzichten die je mensen slimmer, sneller en vaardiger maken.</p>
+      <div class="wwd-cell photo" data-reveal>
+        <Image src={panel} alt="Panelgesprek over AI" widths={[480, 800, 1200]} sizes={cellSizes} />
+      </div>
+      <div class="wwd-cell text" data-reveal>
+        <h3>We onderzoeken</h3>
+        <div class="wwd-body">
+          <p>Onze basis ligt in toegepast onderzoek vanuit Howest. Via lopende onderzoeksprojecten testen we voortdurend wat écht werkt. Geen vluchtige hypes, wel onderbouwde inzichten die je mensen slimmer, sneller en vaardiger maken.</p>
+        </div>
       </div>
     </div>
-  </div>
+  )}
 
   <div class="diagram-wrap" data-reveal>
     <Image
