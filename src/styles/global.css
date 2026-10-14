@@ -84,8 +84,8 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 24px;
-  padding-left: calc(var(--gutter) + 8px);
-  padding-right: calc(var(--gutter) + 8px);
+  padding-left: calc(var(--gutter) + clamp(10px, 1.4vw, 24px));
+  padding-right: calc(var(--gutter) + clamp(10px, 1.4vw, 24px));
 }
 .logo {
   justify-self: start;
@@ -121,7 +121,7 @@ a { color: inherit; text-decoration: none; }
   transition: background .15s ease, color .15s ease, transform .15s ease, border-color .15s ease;
   display: inline-block;
 }
-.nav-pills a:hover { background: var(--purple-mist); color: var(--text-dark); }
+.nav-pills a:hover { background: var(--black); color: var(--white); }
 /* current page */
 .nav-pills a.active { background: var(--blue); color: var(--text-dark); }
 /* Booking button (right side of the header) */
@@ -288,7 +288,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 .contact-cta .cta-bar { margin-top: 24px; margin-bottom: 24px; }
 .cta-block .cta-label {
   font-family: var(--font-heading);
-  color: var(--plum);
+  color: var(--black);
   font-size: clamp(1.05rem, 1.2vw, 1.4rem);
   max-width: var(--content-col);
   margin: 0 auto 16px;
@@ -573,14 +573,17 @@ a.footer-howest:hover { opacity: .75; }
 
 /* ===== Testimonials ===== */
 .testimonials-heading { text-align: center; margin: clamp(48px, 6vw, 96px) 0 8px; }
-.testimonials-heading h2 {
+/* The heading and the line under it are one two-line title: same font, weight and size. */
+.testimonials-heading h2,
+.testimonials-heading .sub {
   font-family: var(--font-display-1);
+  font-weight: bold;
   color: var(--plum);
   font-size: clamp(1.5rem, 1.85vw, 2.2rem);
-  margin: 0 0 2px;
   line-height: 1.05;
 }
-.testimonials-heading .sub { color: var(--plum); font-family: var(--font-display-1); font-size: clamp(1.5rem, 1.85vw, 2.2rem); line-height: 1.05; margin: 0; }
+.testimonials-heading h2 { margin: 0 0 2px; }
+.testimonials-heading .sub { margin: 0; }
 
 .testimonial-carousel {
   position: relative;
