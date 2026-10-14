@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import TrajectCard from "../components/TrajectCard.astro";
+import WatWeDoen from "../components/WatWeDoen.astro";
 import CtaBlock from "../components/CtaBlock.astro";
 import heroAanbod from "../assets/images/hero-aanbod.png";
+import publiek from "../assets/images/publiek-kijkt-naar-presentatie.jpg";
 ---
 <Layout
   title="Aanbod"
@@ -15,30 +16,7 @@ import heroAanbod from "../assets/images/hero-aanbod.png";
     <p class="hero-note">AI-tools kennen is één ding, ze slim inzetten een ander. Wat automatiseer je? Wat versterk je? En waar blijft een mens onmisbaar? Met askbefore.ai helpen we je dat concreet te verankeren in je dagelijkse workflows.</p>
   </section>
 
-  <section class="wrap">
-    <div class="trajects">
-      <TrajectCard
-        title={["#1 Traject", "AI implementatie", "in workflows"]}
-        audience="Voor bedrijven en organisaties"
-        description="Wil je vooral strategische richting, dan is onze standaardformule de ideale start."
-      />
-      <TrajectCard
-        title={["#2 Traject", "AI implementatie", "in workflows"]}
-        extra="+ Proof of concepts"
-        audience="Voor bedrijven en organisaties"
-        description="Wil je sneller resultaat zien? Dan bouwen we in de uitgebreide formule ook werkende prototypes voor je."
-      />
-      <TrajectCard
-        title={["#3 Traject", "Agentic Content creation"]}
-        audience="Voor professionals"
-        description="Leer technische agents bouwen aan de hand van een concreet voorbeeld: contentcreatie met AI."
-      />
-    </div>
-  </section>
-
-  <section class="wrap">
-    <p class="kmo-note" data-reveal>Ben je een kmo met een vestiging in Vlaanderen? Dan komt het opleidingsgedeelte van dit traject in aanmerking voor steun via de kmo-portefeuille van de Vlaamse overheid. Kleine ondernemingen krijgen 30% van het opleidingsbedrag terug, middelgrote 20%, met een maximum van 7.500 euro per jaar.</p>
-  </section>
+  <WatWeDoen photo={publiek} photoAlt="Publiek volgt een presentatie op grote schermen tijdens een evenement" />
 
   <CtaBlock />
 </Layout>
