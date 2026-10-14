@@ -6,6 +6,8 @@
   --purple: #b06ef7;
   --purple-deep: #b06ef7;
   --purple-pale: #f3afff;
+  --blue: #95c8ff;
+  --charcoal: #3c3c3b;
   --pill-inactive: #e1ded7;
   --purple-mist: #dfd1df;
   --white: #ffffff;
@@ -87,18 +89,18 @@ a { color: inherit; text-decoration: none; }
   justify-self: start;
   display: inline-flex;
   align-items: center;
-  background: var(--cream);
+  background: var(--white);
   border-radius: var(--radius-pill);
   padding: clamp(8px, 0.75vw, 13px) clamp(14px, 1.5vw, 22px);
   font-size: clamp(0.82rem, 0.82vw, 1.05rem);
 }
 .logo img {
-  height: 2.3em;
+  height: 1.4em; /* the wordmark is 8.5 : 1, so it needs far less height than the old logo */
   width: auto;
   transition: height .25s ease;
 }
 .site-header.is-scrolled .logo img {
-  height: 1.68em;
+  height: 1.02em;
 }
 .nav-pills {
   display: flex;
@@ -110,14 +112,16 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(0.82rem, 0.6vw, 0.95rem);
   padding: clamp(8px, 0.6vw, 11px) clamp(14px, 1.1vw, 18px);
   border-radius: var(--radius-pill);
-  background: var(--pill-inactive);
-  color: var(--plum);
+  background: var(--charcoal);
+  color: var(--white);
   border: 2px solid transparent;
   white-space: nowrap;
   transition: background .15s ease, color .15s ease, transform .15s ease, border-color .15s ease;
   display: inline-block;
 }
-.nav-pills a:hover { background: var(--purple-mist); }
+.nav-pills a:hover { background: var(--purple-mist); color: var(--text-dark); }
+/* current page */
+.nav-pills a.active { background: var(--blue); color: var(--text-dark); }
 /* Booking button (right side of the header) */
 .nav-cta {
   justify-self: end;
@@ -125,13 +129,13 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(0.82rem, 0.6vw, 0.95rem);
   padding: clamp(8px, 0.6vw, 11px) clamp(16px, 1.3vw, 22px);
   border-radius: var(--radius-pill);
-  background: var(--purple-pale);
-  color: var(--plum);
+  background: var(--purple);
+  color: var(--text-dark);
   border: 2px solid transparent;
   white-space: nowrap;
   transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
-.nav-cta:hover { background: transparent; border-color: var(--plum); color: var(--plum); }
+.nav-cta:hover { background: var(--purple-pale); color: var(--text-dark); }
 .nav-cta-short { display: none; }
 @media (max-width: 720px) {
   .site-header .wrap {
@@ -176,6 +180,22 @@ a { color: inherit; text-decoration: none; }
 .hero--tall .hero-frame { height: clamp(380px, 60vh, 680px); height: clamp(380px, 60svh, 680px); }
 .hero--short .hero-frame { height: clamp(300px, calc(100vh - 400px), 600px); height: clamp(300px, calc(100svh - 400px), 600px); }
 .hero--short { margin-bottom: 0; }
+
+/* Home: the photo fills the screen above the blue intro block and the header floats over it.
+   --header-h is set from the real header height in src/scripts/site.ts (96px until it runs). */
+main:has(.hero--home) { margin-top: calc(var(--header-h, 96px) * -1); }
+main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
+.hero--home {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(12px, 1.2vw, 16px);
+}
+.hero--home .wrap { flex: 1; display: flex; flex-direction: column; }
+.hero--home .hero-frame { flex: 1; min-height: clamp(360px, 50svh, 720px); }
+.hero--home .hero-frame img { position: absolute; inset: 0; }
+.hero--home .hero-frame::after { display: none; } /* hero-home.png is already darkened */
+.hero--home .hero-headline { color: var(--white); }
 .hero-headline {
   position: absolute;
   z-index: 2;
@@ -487,7 +507,7 @@ a.footer-howest:hover { opacity: .75; }
 .page-title-row h1 .accent { color: var(--purple-deep); }
 
 .intro-box {
-  background: var(--purple);
+  background: var(--blue);
   border-radius: var(--radius-lg);
   padding: clamp(32px, 5vw, 60px) clamp(24px, 4vw, 44px);
   display: flex;

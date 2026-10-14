@@ -4,20 +4,20 @@ import Layout from "../layouts/Layout.astro";
 import ArrowIcon from "../components/ArrowIcon.astro";
 import BtnPill from "../components/BtnPill.astro";
 import CtaBlock from "../components/CtaBlock.astro";
+import Hero from "../components/Hero.astro";
 import TestimonialCarousel from "../components/TestimonialCarousel.astro";
 import workshop from "../assets/images/workshop-over-ai-workflows.jpg";
 import agent from "../assets/images/voorbeeld-van-een-ai-content-agent-workflow.jpg";
 import panel from "../assets/images/panelgesprek-over-ai.jpg";
 import diagram from "../assets/images/diagram-onderzoek-community-poc.jpg";
 import poweredBy from "../assets/images/powered-by-howest.png";
+import heroHome from "../assets/images/hero-home.png";
 
 const cellSizes = "(max-width: 900px) 100vw, 50vw";
 ---
 <Layout>
   <div class="intro-screen">
-    <section class="wrap page-title-row">
-      <h1>Eerst vragen.<br /><span class="accent">Dan pas versnellen.</span></h1>
-    </section>
+    <Hero image={heroHome} alt="Het Askbefore.AI-team in gesprek tijdens een workshop rond de AI Workflow Canvas" variant="home">Eerst vragen.<br />Dan pas versnellen.</Hero>
 
     <section class="wrap">
       <div class="intro-box" data-reveal>
