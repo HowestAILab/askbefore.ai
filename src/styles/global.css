@@ -742,11 +742,6 @@ a.footer-howest:hover { opacity: .75; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.wwd-cell.text:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 34px rgba(83, 32, 58, .16);
 }
 .wwd-cell.dark {
   background: var(--plum);
