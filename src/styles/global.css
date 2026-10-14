@@ -808,7 +808,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 }
 .traject-split .wwd-cell.photo img { position: absolute; inset: 0; }
 .traject-split .wwd-cell.text { grid-column: 2; }
-.wwd-cell p.wwd-lead { font-family: var(--font-heading); }
+.wwd-cell p.wwd-lead { font-family: var(--font-heading); font-size: clamp(1.1rem, 1.25vw, 1.45rem); }
 .wwd-list {
   margin: 0;
   padding-left: 1.15em;
@@ -829,15 +829,6 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 
 /* ===== Meer weten + Meet the Strategists (home) ===== */
 .more-trajects { margin-top: clamp(24px, 3vw, 48px); }
-.more-label {
-  font-family: var(--font-display-1);
-  font-weight: bold;
-  color: var(--plum);
-  font-size: clamp(1.5rem, 1.85vw, 2.2rem);
-  line-height: 1.05;
-  margin: 0 0 clamp(14px, 1.4vw, 24px);
-  padding-left: clamp(16px, 1.5vw, 26px);
-}
 .btn-pill.btn-pill--wide {
   display: flex;
   width: 100%;
