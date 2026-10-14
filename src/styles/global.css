@@ -456,7 +456,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   color: var(--text-dark);
 }
 .footer-howest img {
-  height: clamp(46px, 3.8vw, 64px);
+  height: clamp(26px, 2.2vw, 40px);
   width: auto;
 }
 a.footer-howest { transition: opacity .15s ease; }
@@ -485,7 +485,7 @@ a.footer-howest:hover { opacity: .75; }
   transition: opacity .15s ease;
 }
 .powered-by:hover { opacity: .85; }
-.powered-by img { height: clamp(17px, 1.5vw, 26px); width: auto; }
+.powered-by img { height: clamp(17px, 1.5vw, 26px); width: auto; max-width: calc(100% - 32px); }
 .page-title-row {
   flex: 1;
   display: flex;
