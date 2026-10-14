@@ -311,7 +311,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   width: 100%;
   max-width: var(--content-col);
   margin: 0 auto;
-  background: var(--plum);
+  background: var(--black);
   color: var(--cream);
   border: 2px solid transparent;
   border-radius: var(--radius-pill);
@@ -322,17 +322,17 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 }
 .cta-bar:hover {
   background: transparent;
-  border-color: var(--plum);
-  color: var(--plum);
+  border-color: var(--black);
+  color: var(--black);
 }
 .cta-bar .arrow {
   flex: none;
   width: clamp(44px, 3.2vw, 62px);
   height: clamp(44px, 3.2vw, 62px);
   border-radius: 50%;
-  background: var(--cream);
-  border: 2px solid var(--plum);
-  color: var(--plum);
+  background: var(--blue);
+  border: 2px solid var(--black);
+  color: var(--black);
   display: flex;
   align-items: center;
   justify-content: center;
