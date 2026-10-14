@@ -534,7 +534,7 @@ a.footer-howest:hover { opacity: .75; }
 .btn-pill {
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.1vw, 1.25rem);
-  background: var(--plum);
+  background: var(--black);
   color: var(--cream);
   border: 2px solid transparent;
   border-radius: var(--radius-pill);
@@ -547,16 +547,16 @@ a.footer-howest:hover { opacity: .75; }
 }
 .btn-pill:hover {
   background: transparent;
-  border-color: var(--plum);
-  color: var(--plum);
+  border-color: var(--black);
+  color: var(--black);
 }
 .btn-pill .arrow-sm {
   width: clamp(30px, 2.2vw, 44px);
   height: clamp(30px, 2.2vw, 44px);
   border-radius: 50%;
-  background: var(--cream);
-  color: var(--plum);
-  border: 2px solid var(--plum);
+  background: var(--blue);
+  color: var(--black);
+  border: 2px solid var(--black);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -737,7 +737,7 @@ a.footer-howest:hover { opacity: .75; }
 .wwd-cell.photo:hover img { transform: scale(1.05); }
 .wwd-cell.text {
   overflow: visible;
-  background: var(--purple);
+  background: var(--blue);
   padding: clamp(40px, 4vw, 56px) 32px clamp(40px, 3.6vw, 52px);
   display: flex;
   flex-direction: column;
