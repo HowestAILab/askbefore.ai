@@ -1,0 +1,31 @@
+---
+// "Meer weten over onze trajecten?" with a wide button, then "Meet the Strategists".
+import { Image } from "astro:assets";
+import BtnPill from "./BtnPill.astro";
+import gaetan from "../assets/images/team-gaetan-lagae.png";
+import jens from "../assets/images/team-jens-krijgsman.png";
+import eric from "../assets/images/team-eric-mannens.png";
+
+const team = [
+  { name: "Gaëtan Lagae", role: "Brand & Marcom AI Strategist", photo: gaetan, alt: "Portret van Gaëtan Lagae in gesprek tijdens een workshop" },
+  { name: "Jens Krijgsman", role: "IT & AI integrator/specialist", photo: jens, alt: "Portret van Jens Krijgsman die een workshop geeft" },
+  { name: "Eric Mannens", role: "prof. dr. ir. | Ai Strategist", photo: eric, alt: "Portret van Eric Mannens die presenteert met headset" },
+];
+---
+<section class="wrap more-trajects" data-reveal>
+  <p class="more-label">Meer weten over onze trajecten?</p>
+  <BtnPill href="/aanbod" class="btn-pill--wide">Ga naar ons aanbod</BtnPill>
+</section>
+
+<section class="wrap team" id="strategists">
+  <h2 class="section-heading">Meet the Strategists</h2>
+  <ul class="team-grid">
+    {team.map((m) => (
+      <li class="team-member" data-reveal>
+        <Image src={m.photo} alt={m.alt} width={440} height={440} widths={[220, 440]} sizes="(max-width: 700px) 60vw, 22vw" />
+        <h3>{m.name}</h3>
+        <p>{m.role}</p>
+      </li>
+    ))}
+  </ul>
+</section>
