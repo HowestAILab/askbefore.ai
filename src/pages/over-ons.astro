@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WatWeDoen from "../components/WatWeDoen.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import publiek from "../assets/images/publiek-kijkt-naar-presentatie.jpg";
+---
+<Layout
+  title="Over ons"
+  description="Askbefore.ai is een team van AI-specialisten van Howest. We delen kennis, maken proof of concepts en doen onderzoek, altijd op maat van je organisatie."
+>
+  <WatWeDoen photo={publiek} photoAlt="Publiek volgt een presentatie op grote schermen tijdens een evenement" />
+
+  <CtaBlock />
+</Layout>
