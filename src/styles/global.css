@@ -456,7 +456,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   color: var(--text-dark);
 }
 .footer-howest img {
-  height: clamp(26px, 2.2vw, 40px);
+  height: clamp(20px, 1.6vw, 30px);
   width: auto;
 }
 a.footer-howest { transition: opacity .15s ease; }
