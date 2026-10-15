@@ -235,6 +235,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 }
 
 /* ===== Traject cards (home) ===== */
+#trajecten { scroll-margin-top: 110px; }
 .trajects {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -348,18 +349,24 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 .intro-screen--page .hero--tall .hero-frame { flex: 1; height: auto; min-height: clamp(300px, 45svh, 720px); }
 .intro-screen--page .hero--tall .hero-frame img { position: absolute; inset: 0; }
 .note-box {
-  /* no background: a centred text column, same width and inset as .kmo-note (text stays left-aligned) */
-  max-width: min(100%, 900px);
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: clamp(20px, 3vw, 44px) 0 clamp(20px, 3vw, 44px) clamp(26px, 2.6vw, 42px);
+  /* same layout as the home intro box (text left, button right) but without the background */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: clamp(32px, 6vw, 120px);
+  row-gap: clamp(20px, 2vw, 32px);
+  padding: calc(clamp(24px, 4vw, 44px) - 6px) clamp(24px, 4vw, 44px);
 }
 .note-box p {
   font-family: var(--font-display-2);
   margin: 0;
+  flex: 1 1 320px;
+  min-width: 0;
   color: var(--plum);
   font-size: clamp(1.05rem, 0.55vw + 8px, 1.25rem);
   line-height: 1.7;
+  max-width: 62ch;
   text-align: left;
   text-wrap: pretty;
 }
@@ -993,6 +1000,7 @@ main > #wat-we-doen:first-child { margin-top: 0; }
   .nav-pills a { padding: 10px 16px; font-size: .85rem; }
   .intro-screen { min-height: 0; padding-bottom: 32px; }
   .intro-screen.intro-screen--page { margin-bottom: 40px; }
+  .intro-screen--page .hero--tall .hero-frame { min-height: 240px; } /* so the button fits above the fold on a phone */
   .intro-box { flex-direction: column; align-items: flex-start; }
   .intro-copy { flex: 0 0 auto; } /* no 320px minimum height in the column layout */
   .cta-bar { flex-wrap: nowrap; }
@@ -1073,6 +1081,7 @@ main > #wat-we-doen:first-child { margin-top: 0; }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
   .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
   .intro-box { padding: 32px 22px; }
-  .note-box { padding: 20px 4px; }
+  .note-box { flex-direction: column; padding: 20px 22px; }
+  .note-box p { flex: 0 0 auto; }
   .site-footer { padding: 24px 0; }
 }

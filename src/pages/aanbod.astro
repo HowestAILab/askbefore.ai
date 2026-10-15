@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import BtnPill from "../components/BtnPill.astro";
 import TrajectCard from "../components/TrajectCard.astro";
 import CtaBlock from "../components/CtaBlock.astro";
 import heroAanbod from "../assets/images/hero-aanbod.png";
@@ -15,11 +16,12 @@ import heroAanbod from "../assets/images/hero-aanbod.png";
     <section class="wrap">
       <div class="note-box" data-reveal>
         <p>AI-tools kennen is één ding, ze slim inzetten een ander. <strong>Wat automatiseer je? Wat versterk je? En waar blijft een mens onmisbaar?</strong> Met askbefore.ai helpen we je dat concreet te verankeren in je dagelijkse workflows.</p>
+        <BtnPill href="#trajecten">Onze trajecten</BtnPill>
       </div>
     </section>
   </div>
 
-  <section class="wrap">
+  <section class="wrap" id="trajecten">
     <div class="trajects">
       <TrajectCard
         title={["#1 Traject", "AI implementatie", "in workflows"]}
