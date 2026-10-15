@@ -249,11 +249,6 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   min-height: 380px;
   display: flex;
   flex-direction: column;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.traject-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 22px 40px rgba(83, 32, 58, .2);
 }
 .traject-card .kicker {
   font-family: var(--font-display-1);
@@ -308,7 +303,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 
 .kmo-note {
   max-width: var(--content-col);
-  margin: clamp(56px, 8vw, 110px) auto;
+  margin: 0 auto clamp(56px, 8vw, 110px);
   color: var(--plum);
   font-size: clamp(1.05rem, 1.12vw, 1.3rem);
   line-height: 1.65;
