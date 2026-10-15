@@ -671,14 +671,22 @@ a.footer-howest:hover { opacity: .75; }
   -webkit-backface-visibility: hidden;
 }
 .testimonial-face-back {
-  background: var(--charcoal); /* shows while the photo loads */
+  background: var(--plum); /* shows only while the photo loads */
   overflow: hidden;
 }
-.testimonial-back-photo {
+/* wrapper = the whole face (no padding), so the photo always fills it, also in Safari */
+.testimonial-back-media {
   position: absolute;
   inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.testimonial-back-media img {
+  display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
 }
 .testimonial-face-back .testimonial-logo { position: relative; }
