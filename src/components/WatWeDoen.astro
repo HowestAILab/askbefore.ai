@@ -17,13 +17,15 @@ interface Props {
   photoAlt?: string;
   /** "blokken" = the original grid, "traject" = dark bar + sticky photo with two text blocks. */
   variant?: "blokken" | "traject";
+  /** Title above the section. */
+  heading?: string;
 }
-const { photo = workshop, photoAlt = "Workshop over AI-workflows", variant = "blokken" } = Astro.props;
+const { photo = workshop, photoAlt = "Workshop over AI-workflows", variant = "blokken", heading = "Wat we doen" } = Astro.props;
 
 const cellSizes = "(max-width: 900px) 100vw, 50vw";
 ---
 <section class="wrap" id="wat-we-doen">
-  <h2 class="section-heading">Wat we doen</h2>
+  <h2 class="section-heading">{heading}</h2>
   {variant === "traject" ? (
     <TrajectSplit photo={photo} photoAlt={photoAlt} />
   ) : (
