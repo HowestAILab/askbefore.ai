@@ -237,7 +237,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 /* ===== Traject cards (home) ===== */
 .trajects {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(6px, 0.6vw, 12px);
   margin-bottom: 48px;
 }
@@ -247,6 +247,8 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   padding: clamp(26px, 2.4vw, 44px) clamp(22px, 2vw, 38px);
   aspect-ratio: 1 / 1;
   min-height: 380px;
+  width: 100%; /* so min-height never widens the card through the aspect ratio */
+  min-width: 0;
   display: flex;
   flex-direction: column;
 }
@@ -274,7 +276,8 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 /* button look, but only the outline (no fill) */
 .traject-card .tags li {
   border: 2px solid var(--plum);
-  border-radius: var(--radius-pill);
+  border-radius: 1.4em; /* full pill on one line, still tidy when a long label wraps */
+  max-width: 100%;
   padding: 0.4em 1em;
   color: var(--plum);
   font-family: var(--font-heading);
@@ -333,18 +336,27 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   text-align: left;
   box-sizing: border-box;
 }
-/* purple text block under the Aanbod hero; same look as the blue .intro-box on the home page */
+/* Aanbod: hero + plum text block fill the screen together (like the home page), the block ends at the
+   bottom of the screen, then some white space before the three cards. */
+.intro-screen.intro-screen--page {
+  min-height: calc(100vh - var(--header-h, 96px));
+  min-height: calc(100svh - var(--header-h, 96px));
+  margin-bottom: clamp(48px, 6vw, 110px);
+}
+.intro-screen--page .hero--tall { flex: 1; display: flex; flex-direction: column; margin-bottom: clamp(6px, 0.6vw, 12px); }
+.intro-screen--page .hero--tall .wrap { flex: 1; display: flex; flex-direction: column; }
+.intro-screen--page .hero--tall .hero-frame { flex: 1; height: auto; min-height: clamp(300px, 45svh, 720px); }
+.intro-screen--page .hero--tall .hero-frame img { position: absolute; inset: 0; }
 .note-box {
-  background: var(--purple);
+  background: var(--plum);
   border-radius: var(--radius-lg);
   /* top/bottom = left/right minus the half line-gap of the text, so the text looks evenly inset */
   padding: calc(clamp(24px, 4vw, 44px) - 6px) clamp(24px, 4vw, 44px);
-  margin: 0 0 clamp(6px, 0.6vw, 12px);
 }
 .note-box p {
   font-family: var(--font-display-2);
   margin: 0;
-  color: var(--plum);
+  color: var(--cream);
   font-size: clamp(1.05rem, 0.55vw + 8px, 1.25rem);
   line-height: 1.7;
   max-width: 62ch;
@@ -980,6 +992,7 @@ main > #wat-we-doen:first-child { margin-top: 0; }
 @media (max-width: 640px) {
   .nav-pills a { padding: 10px 16px; font-size: .85rem; }
   .intro-screen { min-height: 0; padding-bottom: 32px; }
+  .intro-screen.intro-screen--page { margin-bottom: 40px; }
   .intro-box { flex-direction: column; align-items: flex-start; }
   .intro-copy { flex: 0 0 auto; } /* no 320px minimum height in the column layout */
   .cta-bar { flex-wrap: nowrap; }
