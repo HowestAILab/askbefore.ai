@@ -544,7 +544,7 @@ a.footer-howest:hover { opacity: .75; }
   font-family: var(--font-display-2); /* Alaska Expanded Contrast */
   margin: 0;
   color: var(--plum);
-  font-size: clamp(1.05rem, 1.15vw, 1.55rem); /* laptop size up to ~1460px, then grows on big screens */
+  font-size: clamp(1.05rem, 0.55vw + 8px, 1.25rem); /* laptop size, then grows gently on big screens (~18.6px at 1920px) */
   line-height: 1.7;
   max-width: 62ch;
   text-wrap: pretty;
