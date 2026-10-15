@@ -975,8 +975,8 @@ main > #wat-we-doen:first-child { margin-top: 0; }
   height: auto;
   border-radius: var(--radius-md);
 }
-/* large screens: the diagram can be bigger (it was capped at 1040px) */
-@media (min-width: 1601px) { .diagram-wrap img { max-width: min(100%, 1400px); } }
+/* large screens: the diagram can be bigger (it was capped at 1040px, now 1200px) */
+@media (min-width: 1601px) { .diagram-wrap img { max-width: min(100%, 1200px); } }
 
 /* ===== Scroll reveal =====
    Pure CSS scroll-driven animation: items already on screen at load are simply
