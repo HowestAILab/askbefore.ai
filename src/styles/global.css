@@ -303,7 +303,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 
 .kmo-note {
   max-width: var(--content-col);
-  margin: 0 auto clamp(56px, 8vw, 110px);
+  margin: clamp(48px, 6vw, 96px) auto clamp(56px, 8vw, 110px);
   color: var(--plum);
   font-size: clamp(1.05rem, 1.12vw, 1.3rem);
   line-height: 1.65;
