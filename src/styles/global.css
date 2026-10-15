@@ -744,6 +744,8 @@ a.footer-howest:hover { opacity: .75; }
   min-height: var(--card-min);
   background: var(--blue);
   justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
   transform: rotateY(180deg);
 }
 .testimonial-logo {
@@ -769,8 +771,7 @@ a.footer-howest:hover { opacity: .75; }
   line-height: 1.6;
 }
 .testimonial-author {
-  margin: auto 0 0;
-  padding-top: clamp(18px, 2vw, 26px);
+  margin: 1.6em 0 0; /* one blank line under the quote, not stuck to the bottom */
   color: var(--plum); /* purple has too little contrast on the blue card */
   font-family: var(--font-heading);
   font-style: italic;
