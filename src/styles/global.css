@@ -268,7 +268,29 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   font-size: clamp(1.5rem, 1.6vw, 2.1rem);
   margin: 0;
 }
-.traject-card .spacer { flex: 1; }
+.traject-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 0.6vw, 10px);
+  list-style: none;
+  margin: clamp(16px, 1.6vw, 26px) 0 0;
+  padding: 0;
+}
+/* button look, but only the outline (no fill) */
+.traject-card .tags li {
+  border: 2px solid var(--plum);
+  border-radius: var(--radius-pill);
+  padding: 0.4em 1em;
+  color: var(--plum);
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 0.9vw, 1.05rem);
+  line-height: 1.2;
+}
+.traject-card .tags li.accent {
+  border-color: var(--blue-strong);
+  color: var(--blue-strong);
+}
+.traject-card .spacer { flex: 1; min-height: clamp(20px, 2vw, 32px); }
 .traject-card .voor {
   font-family: var(--font-heading);
   font-size: clamp(0.92rem, 0.85vw, 1.1rem);
