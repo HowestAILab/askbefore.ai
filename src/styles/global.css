@@ -6,7 +6,7 @@
   --purple: #b06ef7;
   --purple-deep: #b06ef7;
   --purple-pale: #f3afff;
-  --blue: #95c8ff;
+  --blue: #87c8ff;
   --blue-strong: #2f83ff;
   --charcoal: #3c3c3b;
   --black: #000000;
@@ -86,6 +86,12 @@ a { color: inherit; text-decoration: none; }
 }
 /* Once scrolled the header only gets tighter; it never gets a background bar of its own */
 .site-header.is-scrolled { padding-top: 12px; }
+/* one set of metrics for the menu pills, the booking button and the (scrolled) logo pill, so they are equally high */
+.site-header {
+  --nav-fs: clamp(0.82rem, 0.6vw, 0.95rem);
+  --nav-py: clamp(8px, 0.6vw, 11px);
+  --nav-h: calc(var(--nav-fs) * 1.25 + var(--nav-py) * 2 + 4px);
+}
 .site-header .wrap {
   /* logo left, menu truly centred, booking button right */
   display: grid;
@@ -112,6 +118,7 @@ a { color: inherit; text-decoration: none; }
 .site-header.is-scrolled .logo img {
   height: 0.84em;
 }
+.site-header.is-scrolled .logo { box-sizing: border-box; height: var(--nav-h); padding-block: 0; }
 .nav-pills {
   display: flex;
   gap: clamp(6px, 0.6vw, 12px);
@@ -119,8 +126,9 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-pills a {
   font-family: var(--font-body);
-  font-size: clamp(0.82rem, 0.6vw, 0.95rem);
-  padding: clamp(8px, 0.6vw, 11px) clamp(14px, 1.1vw, 18px);
+  font-size: var(--nav-fs);
+  line-height: 1.25;
+  padding: var(--nav-py) clamp(14px, 1.1vw, 18px);
   border-radius: var(--radius-pill);
   background: var(--charcoal);
   color: var(--white);
@@ -136,8 +144,9 @@ a { color: inherit; text-decoration: none; }
 .nav-cta {
   justify-self: end;
   font-family: var(--font-body);
-  font-size: clamp(0.82rem, 0.6vw, 0.95rem);
-  padding: clamp(8px, 0.6vw, 11px) clamp(16px, 1.3vw, 22px);
+  font-size: var(--nav-fs);
+  line-height: 1.25;
+  padding: var(--nav-py) clamp(16px, 1.3vw, 22px);
   border-radius: var(--radius-pill);
   background: var(--purple);
   color: var(--text-dark);
@@ -155,6 +164,7 @@ a { color: inherit; text-decoration: none; }
   }
   .logo { grid-area: logo; }
   .logo img { height: 0.84em; } /* small from the start on a phone */
+  .logo { box-sizing: border-box; height: var(--nav-h); padding-block: 0; }
   .nav-cta { grid-area: cta; }
   .nav-pills { grid-area: nav; justify-content: center; }
 }
