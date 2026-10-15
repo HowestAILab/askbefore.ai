@@ -762,6 +762,7 @@ a.footer-howest:hover { opacity: .75; }
 }
 .testimonial-face-front .testimonial-logo {
   margin-bottom: clamp(20px, 2.4vw, 30px);
+  background: var(--white); /* the selected (centre) card */
 }
 .testimonial-logo img { width: 78%; height: 78%; object-fit: contain; display: block; }
 .testimonial-quote {
