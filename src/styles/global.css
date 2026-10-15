@@ -827,8 +827,8 @@ a.footer-howest:hover { opacity: .75; }
   content: "";
   display: block;
   width: clamp(120px, 20vw, 400px);
-  height: clamp(6px, 0.6vw, 10px);
-  margin: clamp(14px, 1.4vw, 26px) auto 0;
+  height: clamp(5px, 0.5vw, 8px);
+  margin: clamp(8px, 0.9vw, 16px) auto 0;
   border-radius: 999px;
   background: var(--blue);
 }
