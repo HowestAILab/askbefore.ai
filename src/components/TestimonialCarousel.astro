@@ -28,7 +28,7 @@ const slides = Array.from({ length: REPEAT }, () => testimonials).flat();
             <article class="testimonial-card">
               <div class="testimonial-card-inner">
                 <div class="testimonial-face testimonial-face-back" aria-hidden="true">
-                  <Image class="testimonial-back-photo" src={t.photo} alt="" widths={[400, 700]} sizes="(max-width: 900px) 78vw, 36vw" loading="lazy" />
+                  <Image class="testimonial-back-photo" src={t.photo} alt="" style={t.photoFocus ? `object-position: ${t.photoFocus}` : undefined} widths={[400, 700]} sizes="(max-width: 900px) 78vw, 36vw" loading="lazy" />
                   <span class="testimonial-logo"><Image src={t.logo} alt="" width={240} loading="lazy" /></span>
                 </div>
                 <div class="testimonial-face testimonial-face-front">

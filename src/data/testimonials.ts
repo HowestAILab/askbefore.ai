@@ -4,13 +4,15 @@ import grandeco from "../assets/images/grandeco.png";
 import howest from "../assets/images/howest.png";
 import workshop from "../assets/images/workshop-over-ai-workflows.jpg";
 import panel from "../assets/images/panelgesprek-over-ai.jpg";
-import overleg from "../assets/images/team-van-askbefore-ai-in-overleg.jpg";
+import gesprek from "../assets/images/gesprek-twee-collegas.jpg";
 
 export interface Testimonial {
   company: string;
   logo: ImageMetadata;
   /** Decorative photo on the back of the card (shown before it flips). */
   photo: ImageMetadata;
+  /** CSS object-position for the photo crop (the card is portrait, photos are landscape). */
+  photoFocus?: string;
   /** One entry per line; rendered with <br> between lines. */
   quote: string[];
   author: string;
@@ -38,7 +40,8 @@ export const testimonials: Testimonial[] = [
   {
     company: "Howest",
     logo: howest,
-    photo: overleg,
+    photo: gesprek,
+    photoFocus: "78% 50%",
     quote: [
       "Kort op de bal, helder in communicatie en gewoon goed werk geleverd.",
     ],
