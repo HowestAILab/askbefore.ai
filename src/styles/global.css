@@ -544,11 +544,12 @@ a.footer-howest:hover { opacity: .75; }
   font-family: var(--font-display-2); /* Alaska Expanded Contrast */
   margin: 0;
   color: var(--plum);
-  font-size: clamp(1rem, 1.15vw, 1.05rem); /* laptop size, does not grow on big screens */
+  font-size: clamp(1.05rem, 1.15vw, 1.55rem); /* laptop size up to ~1460px, then grows on big screens */
   line-height: 1.7;
   max-width: 62ch;
   text-wrap: pretty;
 }
+.intro-box p strong { font-family: var(--font-display-1); font-weight: bold; line-height: 1; } /* keeps the line spacing even */
 
 /* ===== Pill button ===== */
 .btn-pill {
