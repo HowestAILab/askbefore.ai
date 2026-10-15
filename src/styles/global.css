@@ -77,7 +77,8 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== Header ===== */
 .site-header {
-  padding: 24px 0 12px;
+  /* top space = the gap above the hero (same as the page's side margin) + the same inset the logo has from the left */
+  padding: calc(var(--gutter) + clamp(10px, 1.4vw, 24px)) 0 12px;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -210,7 +211,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: clamp(12px, 1.2vw, 16px);
+  margin-top: var(--gutter); /* same as the space left and right */
 }
 .hero--home .wrap { flex: 1; display: flex; flex-direction: column; }
 .hero--home .hero-frame { flex: 1; min-height: clamp(360px, 50svh, 720px); }
@@ -479,7 +480,7 @@ a.footer-howest:hover { opacity: .75; }
   min-height: calc(100svh - 100px);
   display: flex;
   flex-direction: column;
-  padding-bottom: clamp(12px, 2vh, 28px);
+  padding-bottom: var(--gutter); /* same as the space left and right */
 }
 /* "Powered by Howest": beige logo in a plum pill, in the purple block where the button used to be.
    A hidden copy of the "Ga naar ons aanbod" button sets the size, so both are always equally big. */
@@ -1016,7 +1017,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 
 /* ===== Small-screen polish ===== */
 @media (max-width: 640px) {
-  .site-header { padding-top: 14px; }
+  .site-header { padding-top: calc(var(--gutter) + 10px); }
   .hero-headline { left: 16px; right: 16px; }
   .cta-bar { gap: 14px; padding-left: 22px; }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
