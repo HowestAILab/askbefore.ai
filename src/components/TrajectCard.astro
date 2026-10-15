@@ -3,16 +3,26 @@ interface Props {
   /** Kicker lines, rendered with <br> between them. */
   title: string[];
   extra?: string;
+  /** Outlined pills under the title. */
+  tags?: string[];
+  /** One extra pill, shown in blue. */
+  accentTag?: string;
   audience: string;
   description: string;
 }
-const { title, extra, audience, description } = Astro.props;
+const { title, extra, tags = [], accentTag, audience, description } = Astro.props;
 ---
 <article class="traject-card" data-reveal>
   <h2 class="kicker">
     {title.map((line, i) => (<>{i > 0 && <br />}{line}</>))}
   </h2>
   {extra && <p class="extra">{extra}</p>}
+  {(tags.length > 0 || accentTag) && (
+    <ul class="tags">
+      {tags.map((t) => (<li>{t}</li>))}
+      {accentTag && <li class="accent">{accentTag}</li>}
+    </ul>
+  )}
   <div class="spacer"></div>
   <p class="voor">{audience}</p>
   <p class="desc">{description}</p>

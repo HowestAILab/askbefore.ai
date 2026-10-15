@@ -4,7 +4,7 @@
   font-family: "Alaska Light";
   src: url("../assets/fonts/alaska/alaska-light.woff2") format("woff2"),
        url("../assets/fonts/alaska/alaska-light.woff") format("woff");
-  font-weight: normal;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -13,7 +13,7 @@
   font-family: "Alaska Bold";
   src: url("../assets/fonts/alaska/alaska-bold.woff2") format("woff2"),
        url("../assets/fonts/alaska/alaska-bold.woff") format("woff");
-  font-weight: normal;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -22,7 +22,7 @@
   font-family: "Alaska Expanded";
   src: url("../assets/fonts/alaska/alaska-expanded.woff2") format("woff2"),
        url("../assets/fonts/alaska/alaska-expanded.woff") format("woff");
-  font-weight: normal;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -31,7 +31,7 @@
   font-family: "Alaska Expanded Bold";
   src: url("../assets/fonts/alaska/alaska-expanded-bold.woff2") format("woff2"),
        url("../assets/fonts/alaska/alaska-expanded-bold.woff") format("woff");
-  font-weight: normal;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }

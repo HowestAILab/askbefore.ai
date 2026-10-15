@@ -2,7 +2,7 @@
    Palette as specified by the client. Use only these colours. */
 :root {
   --cream: #f1ede0;
-  --plum: #571e3d;
+  --plum: #5f183e;
   --purple: #b06ef7;
   --purple-deep: #b06ef7;
   --purple-pale: #f3afff;
@@ -30,9 +30,17 @@
 @media (max-width: 1600px) {
   :root { --gutter: clamp(6px, 0.6vw, 12px); }
 }
-/* large screens: clearly more room left and right */
+/* Space above the hero / below the first screen: the same as the side margin, except on large screens (below) */
+:root { --top-gap: var(--gutter); --bottom-gap: var(--gutter); --peek: 0px; }
+/* large screens: clearly more room left and right, but not above and below: the first screen is a bit
+   shorter than the window, so a piece of what comes next is already visible at the bottom */
 @media (min-width: 1601px) {
-  :root { --gutter: clamp(60px, 4.5vw, 140px); }
+  :root {
+    --gutter: clamp(60px, 4.5vw, 140px);
+    --top-gap: clamp(20px, 1.6vw, 40px);
+    --bottom-gap: clamp(6px, 0.6vw, 12px);
+    --peek: clamp(100px, 13svh, 170px);
+  }
 }
 
 * { box-sizing: border-box; }
@@ -47,6 +55,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* unhinted glyph advances: fixes uneven gaps around t/f in Alaska Light on Linux/Windows Chrome */
   text-rendering: geometricPrecision;
+  /* every Alaska style is its own file: never let the browser fake a bolder weight on top (h1/h2 are bold by default) */
+  font-synthesis: none;
   overflow-x: hidden;
 }
 /* .page-frame wraps header+main+footer (but not footer-legal) and is
@@ -78,7 +88,7 @@ a { color: inherit; text-decoration: none; }
 /* ===== Header ===== */
 .site-header {
   /* top space = the gap above the hero (same as the page's side margin) + the same inset the logo has from the left */
-  padding: calc(var(--gutter) + clamp(10px, 1.4vw, 24px)) 0 12px;
+  padding: calc(var(--top-gap) + clamp(10px, 1.4vw, 24px)) 0 12px;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -206,12 +216,12 @@ a { color: inherit; text-decoration: none; }
 /* Home: the photo fills the screen above the blue intro block and the header floats over it.
    --header-h is set from the real header height in src/scripts/site.ts (96px until it runs). */
 main:has(.hero--home) { margin-top: calc(var(--header-h, 96px) * -1); }
-main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
+main:has(.hero--home) .intro-screen { min-height: calc(100vh - var(--peek)); min-height: calc(100svh - var(--peek)); }
 .hero--home {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: var(--gutter); /* same as the space left and right */
+  margin-top: var(--top-gap);
 }
 .hero--home .wrap { flex: 1; display: flex; flex-direction: column; }
 .hero--home .hero-frame { flex: 1; min-height: clamp(360px, 50svh, 720px); }
@@ -235,9 +245,10 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 }
 
 /* ===== Traject cards (home) ===== */
+#trajecten { scroll-margin-top: 110px; }
 .trajects {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(6px, 0.6vw, 12px);
   margin-bottom: 48px;
 }
@@ -247,13 +258,10 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   padding: clamp(26px, 2.4vw, 44px) clamp(22px, 2vw, 38px);
   aspect-ratio: 1 / 1;
   min-height: 380px;
+  width: 100%; /* so min-height never widens the card through the aspect ratio */
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.traject-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 22px 40px rgba(83, 32, 58, .2);
 }
 .traject-card .kicker {
   font-family: var(--font-display-1);
@@ -268,7 +276,30 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   font-size: clamp(1.5rem, 1.6vw, 2.1rem);
   margin: 0;
 }
-.traject-card .spacer { flex: 1; }
+.traject-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 0.6vw, 10px);
+  list-style: none;
+  margin: clamp(16px, 1.6vw, 26px) 0 0;
+  padding: 0;
+}
+/* button look, but only the outline (no fill) */
+.traject-card .tags li {
+  border: 2px solid var(--plum);
+  border-radius: 1.4em; /* full pill on one line, still tidy when a long label wraps */
+  max-width: 100%;
+  padding: 0.4em 1em;
+  color: var(--plum);
+  font-family: var(--font-heading);
+  font-size: clamp(0.85rem, 0.9vw, 1.05rem);
+  line-height: 1.2;
+}
+.traject-card .tags li.accent {
+  border-color: var(--blue-strong);
+  color: var(--blue-strong);
+}
+.traject-card .spacer { flex: 1; min-height: clamp(20px, 2vw, 32px); }
 .traject-card .voor {
   font-family: var(--font-heading);
   font-size: clamp(0.92rem, 0.85vw, 1.1rem);
@@ -286,7 +317,7 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 
 .kmo-note {
   max-width: var(--content-col);
-  margin: clamp(56px, 8vw, 110px) auto;
+  margin: clamp(48px, 6vw, 96px) auto clamp(56px, 8vw, 110px);
   color: var(--plum);
   font-size: clamp(1.05rem, 1.12vw, 1.3rem);
   line-height: 1.65;
@@ -316,14 +347,41 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   text-align: left;
   box-sizing: border-box;
 }
-.hero-note {
-  font-family: var(--font-display-2);
-  color: var(--plum);
-  font-size: clamp(0.95rem, 1.4vw, 1.45rem);
-  max-width: clamp(320px, 60vw, 880px);
-  margin: clamp(40px, 8vh, 100px) auto clamp(56px, 8vw, 110px);
-  text-align: center;
+/* Aanbod: hero + plum text block fill the screen together (like the home page), the block ends at the
+   bottom of the screen, then some white space before the three cards. */
+.intro-screen.intro-screen--page {
+  min-height: calc(100vh - var(--header-h, 96px) - var(--peek));
+  min-height: calc(100svh - var(--header-h, 96px) - var(--peek));
+  margin-bottom: clamp(48px, 6vw, 110px);
 }
+@media (min-width: 1601px) { .intro-screen.intro-screen--page { margin-bottom: clamp(28px, 2.4vw, 56px); } }
+.intro-screen--page .hero--tall { flex: 1; display: flex; flex-direction: column; margin-bottom: clamp(6px, 0.6vw, 12px); }
+.intro-screen--page .hero--tall .wrap { flex: 1; display: flex; flex-direction: column; }
+.intro-screen--page .hero--tall .hero-frame { flex: 1; height: auto; min-height: clamp(300px, 45svh, 720px); }
+.intro-screen--page .hero--tall .hero-frame img { position: absolute; inset: 0; }
+.note-box {
+  /* same layout as the home intro box (text left, button right) but without the background */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: clamp(32px, 6vw, 120px);
+  row-gap: clamp(20px, 2vw, 32px);
+  padding: clamp(32px, 4.5vw, 64px) clamp(24px, 4vw, 44px);
+}
+.note-box p {
+  font-family: var(--font-display-2);
+  margin: 0;
+  flex: 1 1 320px;
+  min-width: 0;
+  color: var(--plum);
+  font-size: clamp(1.05rem, 0.55vw + 8px, 1.25rem);
+  line-height: 1.7;
+  max-width: 62ch;
+  text-align: left;
+  text-wrap: pretty;
+}
+.note-box p strong { font-family: var(--font-display-1); font-weight: bold; line-height: 1; }
 .cta-bar {
   display: flex;
   align-items: center;
@@ -480,7 +538,7 @@ a.footer-howest:hover { opacity: .75; }
   min-height: calc(100svh - 100px);
   display: flex;
   flex-direction: column;
-  padding-bottom: var(--gutter); /* same as the space left and right */
+  padding-bottom: var(--bottom-gap);
 }
 /* "Powered by Howest": beige logo in a plum pill, in the purple block where the button used to be.
    A hidden copy of the "Ga naar ons aanbod" button sets the size, so both are always equally big. */
@@ -594,6 +652,7 @@ a.footer-howest:hover { opacity: .75; }
 
 /* ===== Testimonials ===== */
 .testimonials-heading { text-align: center; margin: clamp(48px, 6vw, 96px) 0 8px; }
+@media (min-width: 1601px) { .testimonials-heading { margin-top: clamp(32px, 2.4vw, 56px); } } /* the peek under the first screen shows this title */
 /* The heading and the line under it are one two-line title: same font, weight and size. */
 .testimonials-heading h2,
 .testimonials-heading .sub {
@@ -671,8 +730,25 @@ a.footer-howest:hover { opacity: .75; }
   -webkit-backface-visibility: hidden;
 }
 .testimonial-face-back {
-  background: var(--charcoal);
+  background: var(--plum); /* shows only while the photo loads */
+  overflow: hidden;
 }
+/* wrapper = the whole face (no padding), so the photo always fills it, also in Safari */
+.testimonial-back-media {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.testimonial-back-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+.testimonial-face-back .testimonial-logo { position: relative; }
 .testimonial-face-front {
   position: relative;
   inset: auto;
@@ -680,6 +756,8 @@ a.footer-howest:hover { opacity: .75; }
   min-height: var(--card-min);
   background: var(--blue);
   justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
   transform: rotateY(180deg);
 }
 .testimonial-logo {
@@ -687,7 +765,7 @@ a.footer-howest:hover { opacity: .75; }
   width: clamp(96px, 9.5vw, 136px);
   height: clamp(96px, 9.5vw, 136px);
   border-radius: 50%;
-  background: var(--cream);
+  background: color-mix(in srgb, var(--cream), var(--black) 8%); /* a bit darker than the page beige */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -696,6 +774,7 @@ a.footer-howest:hover { opacity: .75; }
 }
 .testimonial-face-front .testimonial-logo {
   margin-bottom: clamp(20px, 2.4vw, 30px);
+  background: var(--white); /* the selected (centre) card */
 }
 .testimonial-logo img { width: 78%; height: 78%; object-fit: contain; display: block; }
 .testimonial-quote {
@@ -705,8 +784,7 @@ a.footer-howest:hover { opacity: .75; }
   line-height: 1.6;
 }
 .testimonial-author {
-  margin: auto 0 0;
-  padding-top: clamp(18px, 2vw, 26px);
+  margin: 1.6em 0 0; /* one blank line under the quote, not stuck to the bottom */
   color: var(--plum); /* purple has too little contrast on the blue card */
   font-family: var(--font-heading);
   font-style: italic;
@@ -742,11 +820,21 @@ a.footer-howest:hover { opacity: .75; }
   font-family: var(--font-display-1);
   color: var(--plum);
   font-size: clamp(1.8rem, 2.4vw, 3.2rem);
-  margin: 0 0 32px;
+  margin: 0 0 clamp(44px, 4.5vw, 88px);
+}
+/* short rounded blue line under the title */
+.section-heading::after {
+  content: "";
+  display: block;
+  width: clamp(120px, 20vw, 400px);
+  height: clamp(4px, 0.4vw, 6px);
+  margin: clamp(8px, 0.9vw, 16px) auto 0;
+  border-radius: 999px;
+  background: var(--blue);
 }
 #wat-we-doen { scroll-margin-top: 110px; }
 /* on the Aanbod page this section opens the page, so it needs some air below the header */
-main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
+main > #wat-we-doen:first-child { margin-top: 0; }
 .wwd-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -792,19 +880,10 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 }
 
 /* ===== Wat we doen: traject split (home) =====
-   A dark bar, then the first photo stays in view (sticky) while the two blue text blocks scroll past it.
+   The first photo stays in view (sticky) while the two blue text blocks scroll past it.
    --header-h is set from the real header height in src/scripts/site.ts (96px until it runs). */
-.traject-bar {
-  margin: 0 0 clamp(6px, 0.6vw, 12px);
-  padding: clamp(26px, 3vw, 46px) 24px;
-  border-radius: var(--radius-pill);
-  background: var(--plum);
-  color: var(--cream);
-  font-family: var(--font-display-1);
-  font-size: clamp(1.4rem, 1.8vw, 2.2rem);
-  line-height: 1.1;
-  text-align: center;
-}
+.traject-break { display: none; }
+.nowrap { white-space: nowrap; }
 .traject-split {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -833,7 +912,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 }
 .wwd-list strong { font-family: var(--font-heading); font-weight: normal; }
 @media (max-width: 900px) {
-  .traject-bar { font-size: clamp(1rem, 5vw, 1.5rem); padding-inline: 16px; }
+  .traject-break { display: inline; }
   .traject-split { grid-template-columns: 1fr; }
   .traject-split .wwd-cell.photo { position: static; grid-column: auto; grid-row: auto; max-height: none; }
   .traject-split .wwd-cell.photo img { position: static; }
@@ -901,12 +980,15 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   justify-content: center;
   margin: clamp(80px, 8.5vw, 128px) 0 clamp(72px, 7.5vw, 116px);
 }
+.diagram-wrap--first { margin-top: clamp(16px, 2.5vw, 40px); }
 .diagram-wrap img {
   width: 100%;
   max-width: 1040px;
   height: auto;
   border-radius: var(--radius-md);
 }
+/* large screens: the diagram can be bigger (it was capped at 1040px, now 1200px) */
+@media (min-width: 1601px) { .diagram-wrap img { max-width: min(100%, 1200px); } }
 
 /* ===== Scroll reveal =====
    Pure CSS scroll-driven animation: items already on screen at load are simply
@@ -944,6 +1026,8 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 @media (max-width: 640px) {
   .nav-pills a { padding: 10px 16px; font-size: .85rem; }
   .intro-screen { min-height: 0; padding-bottom: 32px; }
+  .intro-screen.intro-screen--page { margin-bottom: 40px; }
+  .intro-screen--page .hero--tall .hero-frame { min-height: 240px; } /* so the button fits above the fold on a phone */
   .intro-box { flex-direction: column; align-items: flex-start; }
   .intro-copy { flex: 0 0 auto; } /* no 320px minimum height in the column layout */
   .cta-bar { flex-wrap: nowrap; }
@@ -1024,5 +1108,9 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
   .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
   .intro-box { padding: 32px 22px; }
+  .section-heading--traject { font-size: min(1.8rem, 7.2vw); } /* "AI-Transformatie-" must fit on the narrowest phones */
+  .note-box { flex-direction: column; padding: 32px 22px; }
+  .note-box .btn-pill { white-space: normal; max-width: 100%; }
+  .note-box p { flex: 0 0 auto; }
   .site-footer { padding: 24px 0; }
 }

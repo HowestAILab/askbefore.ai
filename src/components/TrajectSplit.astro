@@ -1,5 +1,5 @@
 ---
-// "AI Transformatietrajecten": a dark bar, then the photo on the left stays in view (sticky)
+// "AI-Transformatietrajecten": the photo on the left stays in view (sticky)
 // while the two blue text blocks on the right scroll past it. See `.traject-split` in global.css.
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
@@ -12,7 +12,6 @@ const { photo, photoAlt } = Astro.props;
 
 const cellSizes = "(max-width: 900px) 100vw, 50vw";
 ---
-<h3 class="traject-bar" data-reveal>AI Transformatietrajecten</h3>
 <div class="traject-split">
   <!-- no data-reveal here: this block is sticky and must not animate its own position -->
   <div class="wwd-cell photo">

@@ -53,6 +53,50 @@ function trackHeaderHeight() {
   });
 }
 
+/**
+ * Links to an anchor on the same page (e.g. "Onze trajecten") scroll there slowly.
+ * The browser's own smooth scroll has a fixed speed, so this animates it by hand.
+ */
+const SCROLL_MS = 1400;
+let scrollFrame = 0;
+function scrollToAnchor(target: HTMLElement) {
+  const root = document.documentElement;
+  const offset = parseFloat(getComputedStyle(target).scrollMarginTop) || parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+  const maxTop = root.scrollHeight - window.innerHeight;
+  const to = Math.min(Math.max(target.getBoundingClientRect().top + window.scrollY - offset, 0), maxTop);
+  const from = window.scrollY;
+  const start = performance.now();
+  const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); // easeInOutCubic
+  cancelAnimationFrame(scrollFrame);
+  const step = (now: number) => {
+    const t = Math.min((now - start) / SCROLL_MS, 1);
+    window.scrollTo({ top: from + (to - from) * ease(t), behavior: "instant" });
+    if (t < 1) scrollFrame = requestAnimationFrame(step);
+  };
+  scrollFrame = requestAnimationFrame(step);
+}
+document.addEventListener(
+  "click",
+  (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link = (e.target as Element | null)?.closest?.<HTMLAnchorElement>("a[href*='#']");
+    if (!link) return;
+    const url = new URL(link.href, location.href);
+    if (url.pathname !== location.pathname || !url.hash || url.hash === "#") return;
+    const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+    if (!target || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    e.preventDefault();
+    e.stopPropagation();
+    history.pushState(null, "", url.hash);
+    scrollToAnchor(target);
+  },
+  true,
+);
+// Any manual scroll input stops the animation.
+["wheel", "touchstart", "keydown"].forEach((ev) =>
+  window.addEventListener(ev, () => cancelAnimationFrame(scrollFrame), { passive: true }),
+);
+
 window.addEventListener("scroll", updateHeaderState, { passive: true });
 
 // `astro:page-load` fires on the first load and after every client-side navigation.
