@@ -25,7 +25,11 @@ const { photo = workshop, photoAlt = "Workshop over AI-workflows", variant = "bl
 const cellSizes = "(max-width: 900px) 100vw, 50vw";
 ---
 <section class="wrap" id="wat-we-doen">
-  <h2 class="section-heading">{heading}</h2>
+  {variant === "traject" ? (
+    <h2 class="section-heading">AI Transformatie<span class="traject-break" aria-hidden="true">-<br /></span>trajecten</h2>
+  ) : (
+    <h2 class="section-heading">{heading}</h2>
+  )}
   {variant === "traject" ? (
     <TrajectSplit photo={photo} photoAlt={photoAlt} />
   ) : (
