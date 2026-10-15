@@ -794,6 +794,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 /* ===== Wat we doen: traject split (home) =====
    A dark bar, then the first photo stays in view (sticky) while the two blue text blocks scroll past it.
    --header-h is set from the real header height in src/scripts/site.ts (96px until it runs). */
+.traject-break { display: none; }
 .traject-bar {
   margin: 0 0 clamp(6px, 0.6vw, 12px);
   padding: clamp(26px, 3vw, 46px) 24px;
@@ -834,6 +835,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 .wwd-list strong { font-family: var(--font-heading); font-weight: normal; }
 @media (max-width: 900px) {
   .traject-bar { font-size: clamp(1rem, 5vw, 1.5rem); padding-inline: 16px; }
+  .traject-break { display: inline; }
   .traject-split { grid-template-columns: 1fr; }
   .traject-split .wwd-cell.photo { position: static; grid-column: auto; grid-row: auto; max-height: none; }
   .traject-split .wwd-cell.photo img { position: static; }
