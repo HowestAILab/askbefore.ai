@@ -671,8 +671,17 @@ a.footer-howest:hover { opacity: .75; }
   -webkit-backface-visibility: hidden;
 }
 .testimonial-face-back {
-  background: var(--charcoal);
+  background: var(--charcoal); /* shows while the photo loads */
+  overflow: hidden;
 }
+.testimonial-back-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.testimonial-face-back .testimonial-logo { position: relative; }
 .testimonial-face-front {
   position: relative;
   inset: auto;
