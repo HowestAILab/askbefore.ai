@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { testimonials } from "../data/testimonials";
+import { testimonials, backPhotos } from "../data/testimonials";
 
 // Swiper's loop mode needs more slides than are visible at once, so the
 // (unique) testimonials are repeated. The dots and the active card use the
@@ -23,12 +23,12 @@ const slides = Array.from({ length: REPEAT }, () => testimonials).flat();
 
     <div class="testimonial-swiper swiper">
       <div class="swiper-wrapper">
-        {slides.map((t) => (
+        {slides.map((t, i) => (
           <div class="swiper-slide">
             <article class="testimonial-card">
               <div class="testimonial-card-inner">
                 <div class="testimonial-face testimonial-face-back" aria-hidden="true">
-                  <Image class="testimonial-back-photo" src={t.photo} alt="" style={t.photoFocus ? `object-position: ${t.photoFocus}` : undefined} widths={[400, 700]} sizes="(max-width: 900px) 78vw, 36vw" loading="lazy" />
+                  <Image class="testimonial-back-photo" src={backPhotos[i % backPhotos.length].src} alt="" style={`object-position: ${backPhotos[i % backPhotos.length].focus}`} widths={[400, 700]} sizes="(max-width: 900px) 78vw, 36vw" loading="lazy" />
                   <span class="testimonial-logo"><Image src={t.logo} alt="" width={240} loading="lazy" /></span>
                 </div>
                 <div class="testimonial-face testimonial-face-front">
