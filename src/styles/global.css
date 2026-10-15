@@ -348,15 +348,13 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 .intro-screen--page .hero--tall .hero-frame { flex: 1; height: auto; min-height: clamp(300px, 45svh, 720px); }
 .intro-screen--page .hero--tall .hero-frame img { position: absolute; inset: 0; }
 .note-box {
-  background: var(--plum);
-  border-radius: var(--radius-lg);
-  /* top/bottom = left/right minus the half line-gap of the text, so the text looks evenly inset */
-  padding: calc(clamp(24px, 4vw, 44px) - 6px) clamp(24px, 4vw, 44px);
+  /* no background: just a centred text column (the text itself stays left-aligned) */
+  padding: clamp(20px, 3vw, 44px) clamp(24px, 4vw, 44px);
 }
 .note-box p {
   font-family: var(--font-display-2);
-  margin: 0;
-  color: var(--cream);
+  margin: 0 auto;
+  color: var(--plum);
   font-size: clamp(1.05rem, 0.55vw + 8px, 1.25rem);
   line-height: 1.7;
   max-width: 62ch;
@@ -1073,6 +1071,6 @@ main > #wat-we-doen:first-child { margin-top: 0; }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
   .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
   .intro-box { padding: 32px 22px; }
-  .note-box { padding: 20px 22px; }
+  .note-box { padding: 20px 4px; }
   .site-footer { padding: 24px 0; }
 }
