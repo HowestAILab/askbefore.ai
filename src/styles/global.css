@@ -7,7 +7,7 @@
   --purple-deep: #b06ef7;
   --purple-pale: #f3afff;
   --blue: #95c8ff;
-  --blue-strong: #5d86ff;
+  --blue-strong: #2f83ff;
   --charcoal: #3c3c3b;
   --black: #000000;
   --pill-inactive: #e1ded7;
@@ -105,12 +105,12 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(0.82rem, 0.82vw, 1.05rem);
 }
 .logo img {
-  height: 2.3em;
+  height: 1.3em;
   width: auto;
   transition: height .25s ease;
 }
 .site-header.is-scrolled .logo img {
-  height: 1.68em;
+  height: 0.95em;
 }
 .nav-pills {
   display: flex;
@@ -154,6 +154,7 @@ a { color: inherit; text-decoration: none; }
     gap: 10px 12px;
   }
   .logo { grid-area: logo; }
+  .logo img { height: 0.95em; } /* small from the start on a phone */
   .nav-cta { grid-area: cta; }
   .nav-pills { grid-area: nav; justify-content: center; }
 }
@@ -276,8 +277,8 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   max-width: var(--content-col);
   margin: clamp(56px, 8vw, 110px) auto;
   color: var(--plum);
-  font-size: clamp(0.95rem, 1vw, 1.15rem);
-  line-height: 1.5;
+  font-size: clamp(1.05rem, 1.12vw, 1.3rem);
+  line-height: 1.65;
   text-align: left;
   padding-left: clamp(26px, 2.6vw, 42px);
   box-sizing: border-box;
@@ -533,7 +534,7 @@ a.footer-howest:hover { opacity: .75; }
   margin: 0;
   color: var(--plum);
   font-size: clamp(1rem, 1.15vw, 1.05rem); /* laptop size, does not grow on big screens */
-  line-height: 1.5;
+  line-height: 1.7;
   max-width: 62ch;
   text-wrap: pretty;
 }
@@ -774,8 +775,8 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 .wwd-cell p {
   margin: 0;
   color: var(--plum);
-  font-size: clamp(0.95rem, 1vw, 1.15rem);
-  line-height: 1.55;
+  font-size: clamp(1.05rem, 1.12vw, 1.3rem);
+  line-height: 1.65;
 }
 
 /* ===== Wat we doen: traject split (home) =====
@@ -808,15 +809,15 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
 }
 .traject-split .wwd-cell.photo img { position: absolute; inset: 0; }
 .traject-split .wwd-cell.text { grid-column: 2; }
-.wwd-cell p.wwd-lead { font-family: var(--font-heading); font-size: clamp(1.1rem, 1.25vw, 1.45rem); }
+.wwd-cell p.wwd-lead { font-family: var(--font-heading); font-size: clamp(1.2rem, 1.4vw, 1.6rem); }
 .wwd-list {
   margin: 0;
   padding-left: 1.15em;
   display: grid;
   gap: .45em;
   color: var(--plum);
-  font-size: clamp(0.95rem, 1vw, 1.15rem);
-  line-height: 1.55;
+  font-size: clamp(1.05rem, 1.12vw, 1.3rem);
+  line-height: 1.65;
 }
 .wwd-list strong { font-family: var(--font-heading); font-weight: normal; }
 @media (max-width: 900px) {
@@ -835,10 +836,14 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   justify-content: space-between;
   box-sizing: border-box;
   font-size: clamp(1.1rem, 1.4vw, 1.6rem);
-  padding: clamp(14px, 1.4vw, 24px) clamp(8px, 0.8vw, 14px) clamp(14px, 1.4vw, 24px) clamp(22px, 2.2vw, 40px);
+  /* the arrow circle fills the button height, with the same small gap on top, bottom and right */
+  padding: clamp(5px, 0.5vw, 8px) clamp(5px, 0.5vw, 8px) clamp(5px, 0.5vw, 8px) clamp(22px, 2.2vw, 40px);
 }
-.btn-pill--wide .arrow-sm { width: clamp(40px, 3.4vw, 64px); height: clamp(40px, 3.4vw, 64px); }
-.btn-pill--wide .arrow-sm svg { width: clamp(16px, 1.4vw, 26px); height: clamp(16px, 1.4vw, 26px); }
+.btn-pill--wide .arrow-sm { width: clamp(52px, 5.4vw, 88px); height: clamp(52px, 5.4vw, 88px); }
+.btn-pill--wide .arrow-sm svg { width: clamp(20px, 2vw, 32px); height: clamp(20px, 2vw, 32px); }
+.btn-pill--wide .arrow-sm svg.a2 { transform: translate(calc(-50% - 300%), -50%); } /* bigger circle: park the hover arrow fully outside it */
+.btn-pill--wide:hover .arrow-sm svg.a1 { transform: translate(calc(-50% + 300%), -50%); }
+.btn-pill--wide:hover .arrow-sm svg.a2 { transform: translate(-50%, -50%); }
 .team { margin-top: clamp(88px, 11vw, 200px); margin-bottom: clamp(96px, 12vw, 220px); }
 .team-grid {
   list-style: none;
