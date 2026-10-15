@@ -4,7 +4,7 @@ export const SITE = {
   name: "Askbefore.AI",
   url: "https://askbefore.ai",
   description:
-    "Onafhankelijk AI-advies, workshops en proofs of concept van een academische partner.",
+    "Onafhankelijk AI-advies, workshops en proofs of concept van een kennisinstelling.",
   email: "hello@askbefore.ai",
   bookingUrl:
     "https://bookings.cloud.microsoft/book/askbeforeai@hogeschool-wvl.be/?ismsaljsauthenabled",
