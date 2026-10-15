@@ -1,5 +1,5 @@
 ---
-// "Meer weten over onze trajecten?" with a wide button, then "Meet the Strategists".
+// A wide "Bekijk ons aanbod" button (home only), then "Meet the Strategists".
 import { Image } from "astro:assets";
 import BtnPill from "./BtnPill.astro";
 import gaetan from "../assets/images/team-gaetan-lagae.png";
@@ -11,10 +11,18 @@ const team = [
   { name: "Jens Krijgsman", role: "IT & AI integrator/specialist", photo: jens, alt: "Portret van Jens Krijgsman die een workshop geeft" },
   { name: "Eric Mannens", role: "prof. dr. ir. | Ai Strategist", photo: eric, alt: "Portret van Eric Mannens die presenteert met headset" },
 ];
+
+interface Props {
+  /** Show the "Bekijk ons aanbod" button above the team. */
+  showButton?: boolean;
+}
+const { showButton = true } = Astro.props;
 ---
-<section class="wrap more-trajects" data-reveal>
-  <BtnPill href="/aanbod" class="btn-pill--wide">Bekijk ons aanbod</BtnPill>
-</section>
+{showButton && (
+  <section class="wrap more-trajects" data-reveal>
+    <BtnPill href="/aanbod" class="btn-pill--wide">Bekijk ons aanbod</BtnPill>
+  </section>
+)}
 
 <section class="wrap team" id="strategists">
   <h2 class="section-heading">Meet the Strategists</h2>

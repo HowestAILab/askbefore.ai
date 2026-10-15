@@ -759,7 +759,7 @@ a.footer-howest:hover { opacity: .75; }
   font-family: var(--font-display-1);
   color: var(--plum);
   font-size: clamp(1.8rem, 2.4vw, 3.2rem);
-  margin: 0 0 32px;
+  margin: 0 0 clamp(44px, 4.5vw, 88px);
 }
 #wat-we-doen { scroll-margin-top: 110px; }
 /* on the Aanbod page this section opens the page, so it needs some air below the header */
@@ -908,6 +908,7 @@ main > #wat-we-doen:first-child { margin-top: clamp(40px, 5vw, 80px); }
   justify-content: center;
   margin: clamp(80px, 8.5vw, 128px) 0 clamp(72px, 7.5vw, 116px);
 }
+.diagram-wrap--first { margin-top: 0; }
 .diagram-wrap img {
   width: 100%;
   max-width: 1040px;

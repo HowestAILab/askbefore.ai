@@ -17,10 +17,12 @@ interface Props {
   photoAlt?: string;
   /** "blokken" = the original grid, "traject" = dark bar + sticky photo with two text blocks. */
   variant?: "blokken" | "traject";
-  /** Title above the section. */
+  /** Title above the section; pass "" for none. */
   heading?: string;
+  /** Put the diagram above the blocks instead of below. */
+  diagramFirst?: boolean;
 }
-const { photo = workshop, photoAlt = "Workshop over AI-workflows", variant = "blokken", heading = "Wat we doen" } = Astro.props;
+const { photo = workshop, photoAlt = "Workshop over AI-workflows", variant = "blokken", heading = "Wat we doen", diagramFirst = false } = Astro.props;
 
 const cellSizes = "(max-width: 900px) 100vw, 50vw";
 ---
@@ -28,7 +30,18 @@ const cellSizes = "(max-width: 900px) 100vw, 50vw";
   {variant === "traject" ? (
     <h2 class="section-heading">AI Transformatie<span class="traject-break" aria-hidden="true">-<br /></span>trajecten</h2>
   ) : (
-    <h2 class="section-heading">{heading}</h2>
+    heading && <h2 class="section-heading">{heading}</h2>
+  )}
+  {variant !== "traject" && diagramFirst && (
+  <div class="diagram-wrap diagram-wrap--first" data-reveal>
+    <Image
+      src={diagram}
+      alt="Diagram: we onderzoeken, we delen kennis en we maken, rond community, new tech en proof of concepts"
+      widths={[640, 1040, 1600, 2080]}
+      sizes="(max-width: 1040px) 100vw, 1040px"
+      quality={95}
+    />
+  </div>
   )}
   {variant === "traject" ? (
     <TrajectSplit photo={photo} photoAlt={photoAlt} />
@@ -68,7 +81,7 @@ const cellSizes = "(max-width: 900px) 100vw, 50vw";
     </div>
   )}
 
-  {variant !== "traject" && (
+  {variant !== "traject" && !diagramFirst && (
   <div class="diagram-wrap" data-reveal>
     <Image
       src={diagram}
