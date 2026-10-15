@@ -333,13 +333,22 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
   text-align: left;
   box-sizing: border-box;
 }
-.hero-note {
+/* purple text block under the Aanbod hero; same look as the blue .intro-box on the home page */
+.note-box {
+  background: var(--purple);
+  border-radius: var(--radius-lg);
+  padding: clamp(32px, 5vw, 60px) clamp(24px, 4vw, 44px);
+  margin: clamp(6px, 0.6vw, 12px) 0 clamp(6px, 0.6vw, 12px);
+}
+.note-box p {
   font-family: var(--font-display-2);
+  margin: 0;
   color: var(--plum);
-  font-size: clamp(0.95rem, 1.4vw, 1.45rem);
-  max-width: clamp(320px, 60vw, 880px);
-  margin: clamp(40px, 8vh, 100px) auto clamp(56px, 8vw, 110px);
-  text-align: center;
+  font-size: clamp(1.05rem, 0.55vw + 8px, 1.25rem);
+  line-height: 1.7;
+  max-width: 62ch;
+  text-align: left;
+  text-wrap: pretty;
 }
 .cta-bar {
   display: flex;
@@ -1048,6 +1057,6 @@ main > #wat-we-doen:first-child { margin-top: 0; }
   .cta-bar { gap: 14px; padding-left: 22px; }
   .cta-bar > span:first-child { min-width: 0; overflow-wrap: anywhere; }
   .kmo-note, .cta-block .cta-label { padding-left: 4px; padding-right: 4px; }
-  .intro-box { padding: 32px 22px; }
+  .intro-box, .note-box { padding: 32px 22px; }
   .site-footer { padding: 24px 0; }
 }
