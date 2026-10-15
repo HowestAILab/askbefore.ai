@@ -55,6 +55,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* unhinted glyph advances: fixes uneven gaps around t/f in Alaska Light on Linux/Windows Chrome */
   text-rendering: geometricPrecision;
+  /* every Alaska style is its own file: never let the browser fake a bolder weight on top (h1/h2 are bold by default) */
+  font-synthesis: none;
   overflow-x: hidden;
 }
 /* .page-frame wraps header+main+footer (but not footer-legal) and is
