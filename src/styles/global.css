@@ -348,16 +348,18 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 .intro-screen--page .hero--tall .hero-frame { flex: 1; height: auto; min-height: clamp(300px, 45svh, 720px); }
 .intro-screen--page .hero--tall .hero-frame img { position: absolute; inset: 0; }
 .note-box {
-  /* no background: just a centred text column (the text itself stays left-aligned) */
-  padding: clamp(20px, 3vw, 44px) clamp(24px, 4vw, 44px);
+  /* no background: a centred text column, same width and inset as .kmo-note (text stays left-aligned) */
+  max-width: min(100%, 900px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: clamp(20px, 3vw, 44px) 0 clamp(20px, 3vw, 44px) clamp(26px, 2.6vw, 42px);
 }
 .note-box p {
   font-family: var(--font-display-2);
-  margin: 0 auto;
+  margin: 0;
   color: var(--plum);
   font-size: clamp(1.05rem, 0.55vw + 8px, 1.25rem);
   line-height: 1.7;
-  max-width: 62ch;
   text-align: left;
   text-wrap: pretty;
 }
