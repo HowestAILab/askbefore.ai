@@ -105,12 +105,12 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(0.82rem, 0.82vw, 1.05rem);
 }
 .logo img {
-  height: 1.3em;
+  height: 1.15em;
   width: auto;
   transition: height .25s ease;
 }
 .site-header.is-scrolled .logo img {
-  height: 0.95em;
+  height: 0.84em;
 }
 .nav-pills {
   display: flex;
@@ -154,7 +154,7 @@ a { color: inherit; text-decoration: none; }
     gap: 10px 12px;
   }
   .logo { grid-area: logo; }
-  .logo img { height: 0.95em; } /* small from the start on a phone */
+  .logo img { height: 0.84em; } /* small from the start on a phone */
   .nav-cta { grid-area: cta; }
   .nav-pills { grid-area: nav; justify-content: center; }
 }
