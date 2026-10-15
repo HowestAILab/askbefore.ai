@@ -271,17 +271,17 @@ main:has(.hero--home) .intro-screen { min-height: 100vh; min-height: 100svh; }
 .traject-card .spacer { flex: 1; }
 .traject-card .voor {
   font-family: var(--font-heading);
-  font-size: clamp(0.82rem, 0.75vw, 0.97rem);
+  font-size: clamp(0.92rem, 0.85vw, 1.1rem);
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--plum);
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 .traject-card p.desc {
   margin: 0;
   color: var(--plum);
-  font-size: clamp(0.95rem, 1vw, 1.15rem);
-  line-height: 1.5;
+  font-size: clamp(1.05rem, 1.12vw, 1.3rem);
+  line-height: 1.65;
 }
 
 .kmo-note {
