@@ -321,7 +321,7 @@ main:has(.hero--home) .intro-screen { min-height: calc(100vh - var(--peek)); min
 
 .kmo-note {
   max-width: var(--content-col);
-  margin: clamp(48px, calc(6 * var(--vw)), 96px) auto clamp(56px, calc(8 * var(--vw)), 110px);
+  margin: clamp(40px, calc(6 * var(--vw) - 34px), 62px) auto clamp(56px, calc(8 * var(--vw)), 110px); /* white space above = below */
   color: var(--plum);
   font-size: clamp(1.05rem, calc(1.12 * var(--vw)), 1.3rem);
   line-height: 1.65;
@@ -684,7 +684,7 @@ a.footer-howest:hover { opacity: .75; }
   width: 100%;
   max-width: 1760px;
   margin: 0 auto;
-  padding: 0 0 clamp(28px, calc(6 * var(--vw) - 15px), 76px);
+  padding: 0 0 clamp(20px, calc(6 * var(--vw) - 56px), 40px); /* ~110px between the dots and the next title */
 }
 /* large screens: the carousel stays inside the same side margins as the rest of the page */
 @media (min-width: 1601px) {
@@ -953,8 +953,8 @@ main > #wat-we-doen:first-child { margin-top: 0; }
 .btn-pill--wide .arrow-sm svg.a2 { transform: translate(calc(-50% - 300%), -50%); } /* bigger circle: park the hover arrow fully outside it */
 .btn-pill--wide:hover .arrow-sm svg.a1 { transform: translate(calc(-50% + 300%), -50%); }
 .btn-pill--wide:hover .arrow-sm svg.a2 { transform: translate(-50%, -50%); }
-.team { margin-top: clamp(88px, calc(11 * var(--vw)), 142px); margin-bottom: clamp(96px, calc(12 * var(--vw)), 146px); } /* ~150px of visible white space above and below */
-.more-trajects + .team { margin-top: clamp(88px, calc(11 * var(--vw)), 200px); } /* home: unchanged */
+.team { margin-top: clamp(80px, calc(11 * var(--vw)), 102px); margin-bottom: clamp(96px, calc(12 * var(--vw)), 146px); } /* ~110px white space above the title */
+.more-trajects + .team { margin-top: clamp(70px, calc(11 * var(--vw) - 57px), 105px); } /* home */
 .team-grid {
   list-style: none;
   margin: 0;
