@@ -261,8 +261,8 @@ main:has(.hero--home) .intro-screen { min-height: calc(100vh - var(--peek)); min
   border-radius: var(--radius-lg);
   padding: clamp(26px, calc(2.4 * var(--vw)), 44px) clamp(22px, calc(2 * var(--vw)), 38px);
   aspect-ratio: 1 / 1;
-  min-height: 380px;
-  width: 100%; /* so min-height never widens the card through the aspect ratio */
+  align-self: stretch; /* the three cards in a row grow to the tallest one (they never get shorter than their text) */
+  width: 100%;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -668,7 +668,7 @@ a.footer-howest:hover { opacity: .75; }
 }
 .testimonials-heading h2 { margin: 0; }
 .testimonials-heading .sub { margin: 0; }
-/* short rounded purple line under the title (same shape as the blue one under .section-heading) */
+/* short rounded blue line under the title (same shape as the one under .section-heading) */
 .testimonials-heading::after {
   content: "";
   display: block;
@@ -676,7 +676,7 @@ a.footer-howest:hover { opacity: .75; }
   height: clamp(4px, calc(0.4 * var(--vw)), 6px);
   margin: clamp(8px, calc(0.9 * var(--vw)), 16px) auto 0;
   border-radius: 999px;
-  background: var(--purple);
+  background: var(--blue);
 }
 
 .testimonial-carousel {
@@ -684,7 +684,7 @@ a.footer-howest:hover { opacity: .75; }
   width: 100%;
   max-width: 1760px;
   margin: 0 auto;
-  padding: 0 0 clamp(48px, calc(6 * var(--vw)), 88px);
+  padding: 0 0 clamp(28px, calc(6 * var(--vw) - 20px), 68px);
 }
 /* large screens: the carousel stays inside the same side margins as the rest of the page */
 @media (min-width: 1601px) {
@@ -953,7 +953,8 @@ main > #wat-we-doen:first-child { margin-top: 0; }
 .btn-pill--wide .arrow-sm svg.a2 { transform: translate(calc(-50% - 300%), -50%); } /* bigger circle: park the hover arrow fully outside it */
 .btn-pill--wide:hover .arrow-sm svg.a1 { transform: translate(calc(-50% + 300%), -50%); }
 .btn-pill--wide:hover .arrow-sm svg.a2 { transform: translate(-50%, -50%); }
-.team { margin-top: clamp(88px, calc(11 * var(--vw)), 200px); margin-bottom: clamp(96px, calc(12 * var(--vw)), 220px); }
+.team { margin-top: clamp(88px, calc(11 * var(--vw)), 142px); margin-bottom: clamp(96px, calc(12 * var(--vw)), 146px); } /* ~150px of visible white space above and below */
+.more-trajects + .team { margin-top: clamp(88px, calc(11 * var(--vw)), 200px); } /* home: unchanged */
 .team-grid {
   list-style: none;
   margin: 0;
