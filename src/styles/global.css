@@ -499,6 +499,26 @@ main:has(.hero--home) .intro-screen { min-height: calc(100vh - var(--peek)); min
   color: var(--plum);
   margin: 0 0 16px;
 }
+@media (max-width: 480px) { .legal-content h1 { font-size: 7.2vw; overflow-wrap: anywhere; } } /* "Privacyverklaring" must fit on the narrowest phones */
+.legal-content h2 {
+  overflow-wrap: anywhere;
+  font-family: var(--font-display-1);
+  color: var(--plum);
+  font-size: clamp(1.15rem, calc(1.5 * var(--vw)), 1.6rem);
+  line-height: 1.25;
+  margin: clamp(28px, calc(2.6 * var(--vw)), 44px) 0 12px;
+}
+.legal-content ul {
+  margin: 0 0 16px;
+  padding-left: 1.3em;
+  color: var(--plum);
+  font-size: clamp(1rem, calc(1.1 * var(--vw)), 1.2rem);
+  line-height: 1.6;
+}
+.legal-content li { margin: 0 0 4px; }
+.legal-content a { color: var(--plum); text-decoration: underline; text-underline-offset: 3px; }
+.legal-content a:hover { text-decoration-thickness: 2px; }
+.legal-content .legal-updated { margin-top: clamp(28px, calc(2.6 * var(--vw)), 44px); font-size: clamp(.9rem, calc(.95 * var(--vw)), 1rem); }
 .legal-content .placeholder-note {
   display: inline-block;
   margin-top: 8px;
