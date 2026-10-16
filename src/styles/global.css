@@ -32,11 +32,11 @@
 }
 /* Space above the hero / below the first screen: the same as the side margin, except on large screens (below) */
 :root { --top-gap: var(--gutter); --bottom-gap: var(--gutter); --peek: 0px; }
-/* large screens: clearly more room left and right, but not above and below: the first screen is a bit
+/* large screens: only a little more room left and right than on a laptop, and not above and below: the first screen is a bit
    shorter than the window, so a piece of what comes next is already visible at the bottom */
 @media (min-width: 1601px) {
   :root {
-    --gutter: clamp(60px, 4.5vw, 140px);
+    --gutter: clamp(12px, 0.8vw, 28px);
     --top-gap: clamp(20px, 1.6vw, 40px);
     --bottom-gap: clamp(6px, 0.6vw, 12px);
     --peek: clamp(100px, 13svh, 170px);
@@ -652,7 +652,7 @@ a.footer-howest:hover { opacity: .75; }
 
 /* ===== Testimonials ===== */
 .testimonials-heading { text-align: center; margin: clamp(48px, 6vw, 96px) 0 8px; }
-@media (min-width: 1601px) { .testimonials-heading { margin-top: clamp(32px, 2.4vw, 56px); } } /* the peek under the first screen shows this title */
+@media (min-width: 1601px) { .testimonials-heading { margin-top: clamp(56px, 4vw, 90px); } } /* the peek under the first screen shows this title */
 /* The heading and the line under it are one two-line title: same font, weight and size. */
 .testimonials-heading h2,
 .testimonials-heading .sub {
@@ -660,21 +660,31 @@ a.footer-howest:hover { opacity: .75; }
   font-weight: bold;
   color: var(--plum);
   font-size: clamp(1.5rem, 1.85vw, 2.2rem);
-  line-height: 1.05;
+  line-height: 1.22;
 }
-.testimonials-heading h2 { margin: 0 0 2px; }
+.testimonials-heading h2 { margin: 0; }
 .testimonials-heading .sub { margin: 0; }
+/* short rounded purple line under the title (same shape as the blue one under .section-heading) */
+.testimonials-heading::after {
+  content: "";
+  display: block;
+  width: clamp(120px, 20vw, 400px);
+  height: clamp(4px, 0.4vw, 6px);
+  margin: clamp(8px, 0.9vw, 16px) auto 0;
+  border-radius: 999px;
+  background: var(--purple);
+}
 
 .testimonial-carousel {
   position: relative;
   width: 100%;
   max-width: 1760px;
   margin: 0 auto;
-  padding: clamp(8px, 1.5vw, 20px) 0 clamp(48px, 6vw, 88px);
+  padding: 0 0 clamp(48px, 6vw, 88px);
 }
 .testimonial-swiper {
   width: 100%;
-  padding: clamp(40px, 5vw, 70px) clamp(28px, 6vw, 88px) clamp(34px, 4vw, 52px);
+  padding: clamp(30px, 3.6vw, 52px) clamp(28px, 6vw, 88px) clamp(34px, 4vw, 52px);
   /* hidden until Swiper has centred the slides, so the cards never jump */
   opacity: 0;
   transition: opacity .4s ease;
