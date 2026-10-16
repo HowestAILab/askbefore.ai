@@ -32,11 +32,11 @@
 }
 /* Space above the hero / below the first screen: the same as the side margin, except on large screens (below) */
 :root { --top-gap: var(--gutter); --bottom-gap: var(--gutter); --peek: 0px; }
-/* large screens: only a little more room left and right than on a laptop, and not above and below: the first screen is a bit
+/* large screens: clearly more room left and right, but not above and below: the first screen is a bit
    shorter than the window, so a piece of what comes next is already visible at the bottom */
 @media (min-width: 1601px) {
   :root {
-    --gutter: clamp(12px, 0.8vw, 28px);
+    --gutter: clamp(80px, 6vw, 190px);
     --top-gap: clamp(20px, 1.6vw, 40px);
     --bottom-gap: clamp(6px, 0.6vw, 12px);
     --peek: clamp(100px, 13svh, 170px);
