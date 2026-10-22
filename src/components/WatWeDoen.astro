@@ -1,6 +1,6 @@
 ---
 // "Wat we doen": heading, then either the four-block grid (knowledge, making, research)
-// or the "AI-Transformatietrajecten" split with a sticky photo, then the diagram.
+// or the "AI-strategie & transformatietrajecten" split with a sticky photo, then the diagram.
 // Shared by the home page and the Aanbod page.
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
@@ -28,7 +28,7 @@ const cellSizes = "(max-width: 900px) 100vw, 50vw";
 ---
 <section class="wrap" id="wat-we-doen">
   {variant === "traject" ? (
-    <h2 class="section-heading section-heading--traject"><span class="nowrap">AI-Transformatie</span><span class="traject-break" aria-hidden="true">-<br /></span>trajecten</h2>
+    <h2 class="section-heading section-heading--traject">Onze AI-strategie<br />&amp; transformatie&shy;trajecten</h2>
   ) : (
     heading && <h2 class="section-heading">{heading}</h2>
   )}
