@@ -9,15 +9,39 @@ import TeamSection from "../components/TeamSection.astro";
 import WatWeDoen from "../components/WatWeDoen.astro";
 import poweredBy from "../assets/images/howest-research-wit.png";
 import heroHome from "../assets/images/hero-home.jpg";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Askbefore.ai",
+  image: "https://askbefore.ai",
+  url: "https://askbefore.ai",
+  telephone: "",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Sint-Martens-Latemlaan 1B",
+    addressLocality: "Kortrijk",
+    addressRegion: "West-Vlaanderen",
+    postalCode: "8500",
+    addressCountry: "BE",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: 50.8242, longitude: 3.2534 },
+  knowsAbout: ["Artificial Intelligence", "AI-strategie", "AI-workshops", "Machine Learning", "Prototypes"],
+  parentOrganization: { "@type": "EducationalOrganization", name: "Howest Research" },
+};
 ---
-<Layout>
+<Layout
+  seoTitle="Askbefore.ai | AI-strategie & AI-workshops West-Vlaanderen"
+  description="AI-advies en praktijkgerichte AI-workshops in West-Vlaanderen. Askbefore.ai helpt organisaties in Kortrijk en regio met AI-strategie en prototypes."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <div class="intro-screen">
     <Hero image={heroHome} alt="Het Askbefore.AI-team in gesprek tijdens een workshop rond de AI Workflow Canvas" variant="home">Eerst vragen.<br />Dan pas versnellen.</Hero>
 
     <section class="wrap">
       <div class="intro-box" data-reveal>
         <div class="intro-copy">
-          <p>Askbefore.ai is een team van AI-specialisten verbonden aan Howest Research, met een stevige achtergrond in <strong>business, marketing en IT</strong>. We helpen organisaties om AI slim en gericht in te zetten. Je krijgt onafhankelijk advies, praktische workshops en concrete prototypes waarmee je meteen verder kunt.</p>
+          <p>Askbefore.ai is een team van AI-specialisten verbonden aan Howest Research, met een stevige achtergrond in <strong>business, marketing en IT</strong>. Vanuit Kortrijk en regio West-Vlaanderen helpen we organisaties met onafhankelijke AI-strategie, praktische workshops en werkende prototypes om direct te versnellen.</p>
         </div>
         <!-- Takes the place of the "Ga naar ons aanbod" button. The hidden copy of that button
              makes this pill exactly as big as the button, at every screen size. -->

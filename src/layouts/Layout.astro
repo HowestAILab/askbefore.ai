@@ -19,10 +19,12 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  /** Exact <title> (no " | Askbefore.AI" suffix), for pages with a hand-written SEO title. */
+  seoTitle?: string;
 }
 
-const { title, description = SITE.description, noindex = false } = Astro.props;
-const fullTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+const { title, description = SITE.description, noindex = false, seoTitle } = Astro.props;
+const fullTitle = seoTitle ?? (title ? `${title} | ${SITE.name}` : SITE.name);
 // build.format is "file", so strip the .html / index the pathname would otherwise carry.
 const cleanPath = Astro.url.pathname.replace(/(^|\/)index\.html$/, "$1").replace(/\.html$/, "");
 const canonical = new URL(cleanPath || "/", SITE.url).href;
@@ -56,6 +58,8 @@ const preloadFonts = [alaskaLight, alaskaBold, alaskaExpanded, alaskaExpandedBol
     <meta name="twitter:card" content="summary_large_image" />
 
     {preloadFonts.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
+
+    <slot name="head" />
 
     <Analytics />
 
