@@ -683,7 +683,7 @@ a.footer-howest:hover { opacity: .75; }
   font-family: var(--font-display-1);
   font-weight: bold;
   color: var(--plum);
-  font-size: clamp(1.5rem, calc(1.85 * var(--vw)), 2.2rem);
+  font-size: clamp(1.65rem, calc(2.1 * var(--vw)), 2.8rem);
   line-height: 1.22;
 }
 .testimonials-heading h2 { margin: 0; }
