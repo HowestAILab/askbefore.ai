@@ -20,7 +20,7 @@
     "@astrojs/check": "^0.9.10",
     "@astrojs/sitemap": "^3.7.4",
     "@vercel/analytics": "^2.0.1",
-    "astro": "^7.3.7",
+    "astro": "^7.4.7",
     "sharp": "^0.35.5",
     "swiper": "^14.3.0",
     "typescript": "^6.0.3"
